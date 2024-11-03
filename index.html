@@ -19,6 +19,35 @@
         color: #014f95;
         font-weight: 800 !important;
       }
+      .paper {
+        padding-top: 5px;
+        padding-bottom: 45px;
+        width: 100%;
+      }
+      .paper-title {
+        font-size: 20px;
+        display: inline-block;
+      }
+      .paper-conf {
+        font-size: 20px;
+        font-weight: 500;
+        font-style: italic;
+        display: inline-block;
+      }
+      .paper-conf:before {
+        content: ' ';
+      }
+      .paper-pdf {
+        font-size: 20px;
+        color: #000;
+      }
+      .paper-authors {
+        font-size: 18px;
+      }
+      .paper-authors:before {
+        content: ' ';
+        display: block;
+      }
     </style>
   </head>
   <body>
@@ -33,31 +62,35 @@
 
       <main>
 
-        <div class="row">
-          <div class="row">
-            <div class="col-md-12 text-center">
-              <span class="fs-3 text-title">News</span>
-            </div>
+        <div class="row pb-4">
+          <div class="text-center">
+            <span class="fs-3 mb-5 text-title">Event</span>
+          </div>
+          <p class="fs-6 fw-bold">
+            <a href="./2024" class="link-dark">
+              <h3>2024 Security@KAIST Fair</h3>
+              <span class="fs-6 fw-normal">Nov. 26, 2024</span><br />
+              <span class="fs-6 fw-normal">KAIST, Daejeon, Korea</span>
+            </a>
+          </p>
+        </div>
+
+        <div class="row mt-4">
+          <div class="text-center mb-3">
+            <span class="fs-3 mb-5 text-title">Publications</span>
           </div>
 
-          <div class="row">
-            <div class="col-md-12 fs-5">
-              <div class="container">
-                <p>
-                  <span class="fw-bold">
-                    <i class="bi bi-calendar-check"></i> Event
-                  </span>
-                </p>
-                <p class="fs-6 fw-bold">
-                  <a href="./2024" class="link-dark">
-                    2024 Security@KAIST Fair<br />
-                    <span class="fs-6 fw-normal">Nov. 26, 2024</span><br />
-                    <span class="fs-6 fw-normal">KAIST, Daejeon, Korea</span>
-                  </a>
-                </p>
-              </div>
-            </div>
+          <!-- Add papers using the same format below. Always use the "paper"
+               class, followed by the "paper-title", "paper-conf", "paper-pdf", and
+               "paper-authors" classes. -->
+
+          <div class="paper">
+            <div class="paper-title">AsFuzzer: Differential Testing of Assemblers with Error-Driven Grammar Inference</div>
+            <div class="paper-conf">ISSTA 2024</div>
+            <a class="paper-pdf" href="https://softsec.kaist.ac.kr/~sangkilc/papers/kim-issta24.pdf"><i class="bi bi-file-earmark-pdf"></i></a>
+            <div class="paper-authors">Hyungseok Kim, Soomin Kim, Jungwoo Lee, and Sang Kil Cha</div>
           </div>
+
         </div>
 
       </main>
