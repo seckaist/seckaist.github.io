@@ -10,6 +10,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@400;700&family=Noto+Sans+KR:wght@100..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nanum+Pen+Script">
     <style>
       * {
         font-family: "Noto Sans KR", sans-serif;
@@ -21,7 +22,43 @@
       }
       .card-header {
         color: #fff;
+	font-weight: bold;
+	font-size: 1.2rem;
         background-color: #014f95;
+      }
+      .container {
+        max-width: 400px;
+        background: #beefff;
+        border-radius: 10px;
+        padding: 30px;
+        box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s ease-in-out;
+      }
+      .container:hover {
+        transform: scale(1.1);
+      }
+      .headline {
+        font-family: 'Nanum Pen Script', sans-serif;
+        font-size: 1.8rem;
+        color: #6b7280;
+        margin-bottom: 10px;
+        animation: fadeIn 1.0s ease-in-out;
+      }
+      .highlight {
+        font-size: 2.1rem;
+        color: #014f95;
+        font-weight: bold;
+        text-shadow: 2px 2px 5px rgba(1, 26, 149, 0.2);
+        transition: color 0.3s ease-in-out;
+      }
+      .main-text {
+        font-size: 1.2rem;
+        color: #6b7280;
+        margin-top: 15px;
+      }
+      @keyframes fadeIn {
+        0% { opacity: 0; }
+        100% { opacity: 1; }
       }
     </style>
   </head>
@@ -44,17 +81,23 @@
             </div>
           </div>
 
+	  <div class="container mt-4">
+	    <center>
+	      <p class="headline">
+		보안은 어렵다...? &#x1F622;<br/>
+		<span class="highlight">No! 보안은 <strong>재밌다!!</strong> &#x1F60E;</span>
+	      </p>
+	      <p class="main-text">
+		<b>2024 카이스트 보안축제</b>가<br/>
+		11월 26일(화)에 개최됩니다.<br/>
+		카이스트 학부생이라면<br/>
+		누구나 참여 가능합니다.
+	      </p>
+	    </center>
+	  </div>
+	  
           <div class="row mt-5">
             <div class="container-fluid">
-              <p class="fs-2">
-                보안은 어렵다?<br/>
-                No! <span class="fs-1"><b>보안은 재밌다!</b></span>
-              </p>
-              <p class="fs-3">
-                2024 카이스트 <b>보안축제</b>가 11월 26일(화)에 개최됩니다. 카이스트 학부생이라면 누구나 참여
-                가능합니다.
-              </p>
-
               <div class="card">
                 <div class="card-header">장소</div>
                 <div class="card-body">
@@ -68,17 +111,17 @@
                   <h6 class="card-subtitle mb-2 text-muted"><i class="bi bi-calendar-check-fill"></i> 11월 26일(화) 15:00 ~ 18:00 (1-2층 복도) &mdash; <b>포스터와 데모</b></h6>
                   <p class="card-text">
                     <ul>
-                      <li>재미가 팡팡! 보안 기술 체험 부스</li>
-                      <li>다양한 기념품과 포토존에서의 기념사진 찰칵! <i class="bi bi-camera-fill"></i></li>
-                      <li>보안기업에서 인턴십을 원한다면? 기업 부스로! <i class="bi bi-people-fill"></i></li>
-                      <li>맛있는 빵과 음료도 드시러 오세요 <i class="bi bi-cup-hot-fill"></i></li>
+                      <li>재미가 팡팡! 보안 기술 체험 부스 &#x1F5A5;</li>
+                      <li>다양한 기념품과 포토존에서의 기념사진 찰칵! &#x1F4F7;</li>
+                      <li>보안기업에서 인턴십을 원한다면? 기업 부스로! &#x1F465;</li>
+                      <li>맛있는 빵과 음료도 드시러 오세요 &#x2615;</li>
                     </ul>
                   </p>
 
                   <h6 class="card-subtitle mt-5 mb-2 text-muted"><i class="bi bi-calendar-check-fill"></i> 11월 26일(화) 15:00 ~ 16:10 (조수미홀) &mdash; <b>졸업생과의 대화</b></h6>
                   <p class="card-text">
                     <ul>
-                      <li>정보보호대학원 선배들은 지금 무얼하고 있을까?</li>
+                      <li>정보보호대학원 선배들은 지금 무엇을 하고 있을까?</li>
                       <li>국내외에서 활동중인 정보보호대학원 졸업생과의 대화!</li>
                     </ul>
                   </p>
@@ -88,49 +131,63 @@
                     <table class="table">
                       <thead>
                         <tr>
-                          <th scope="col">시간</th>
-                          <th scope="col">제목</th>
-                          <th scope="col">발표자</th>
+                          <th scope="col"><b>시간</b></th>
+                          <th scope="col"><b>제목</b></th>
+                          <th scope="col"><b>발표자</b></th>
                         </tr>
                       </thead>
                       <tbody>
                         <tr>
                           <th scope="row">16:10 ~ 16:30</th>
                           <td>DARPA AIxCC: LLM이 가져올 사이버 보안의 새로운 시대</td>
-                          <td>윤인수</td>
+                          <td>윤인수 교수 (KAIST)</td>
                         </tr>
                         <tr>
                           <th scope="row">16:30 ~ 16:50</th>
                           <td>Sensing the Future: Unveiling the Benefits and Risks of Sensing in Cyber-Physical Security</td>
-                          <td>한준</td>
+                          <td>한준 교수 (KAIST)</td>
                         </tr>
                         <tr>
                           <th scope="row">16:50 ~ 17:10</th>
                           <td>UnitCon: 자바 런타임 예외 검출을 위한 목표 지향성 단위 테스트 케이스 합성</td>
-                          <td>장수진</td>
+                          <td>장수진 박사과정 (KAIST)</td>
                         </tr>
                         <tr>
                           <th scope="row">17:10 ~ 17:30</th>
                           <td>Authentication for Wearable Devices</td>
-                          <td>Ian Oakley</td>
+                          <td>Ian Oakley 교수 (KAIST)</td>
                         </tr>
                         <tr>
                           <th scope="row">17:30 ~ 17:50</th>
                           <td>Cellular Metasploit</td>
-                          <td>김용대</td>
+                          <td>김용대 교수 (KAIST)</td>
                         </tr>
                       </tbody>
                     </table>
                   </p>
                 </div>
+              </div>
+
+	      <div class="card mt-3">
+                <div class="card-header">행사 포스터</div>
+		<div class="card-body">
+		  <h6 class="card-subtitle mb-2 text-muted">
+		    <i class="bi bi-play-btn-fill"></i> 포스터를 클릭(터치)하시면 행사 홍보 영상을 보실 수 있습니다. (현재 준비중입니다.)</h6>
+		</div>
+		<center>
+		  <a href="/2024/res/sample-video.mp4" target="_blank">
+		    <img src="/2024/res/2024-Security-at-KAIST-Fair.png" style="width:95%;" class="img-fluid" />
+		  </a>
+		</center>
+              </div>
             </div>
           </div>
         </div>
 
       </main>
 
-    </div>
+      </div>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
   </body>
 </html>
