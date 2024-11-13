@@ -85,6 +85,14 @@
           margin-top: 10px;
           text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.5);
       }
+      iframe {
+          display: block;
+          width:99%;
+          height:99%;
+      }
+      .iframe-container {
+          aspect-ratio: 9 / 16;
+      }
     </style>
   </head>
   <body>
@@ -93,14 +101,14 @@
 
       <header class="d-flex align-items-center pb-3 mb-5 border-bottom">
         <a href="/" class="mx-auto text-center">
-          <img src="/logo.png" alt="Security@KAIST" class="img-fluid" />
+          <img src="./logo2.png" alt="Security@KAIST" class="img-fluid" />
         </a>
       </header>
 
       <main>
 
 	<center>
-	  <img src="/2024/res/top-image.png" alt="Security@KAIST" class="img-fluid" />
+	  <img src="./banner.png" alt="Security@KAIST" class="img-fluid" />
 	</center>
 
         <div class="row mt-5">
@@ -208,15 +216,20 @@
             </div>
 
 	    <div class="card mt-3">
-              <div class="card-header">행사 포스터</div>
-	      <div class="card-body">
-		<h6 class="card-subtitle mb-2 text-muted">
-		  <i class="bi bi-play-btn-fill"></i> 포스터를 클릭(터치)하시면 행사 홍보 영상을 보실 수 있습니다.</h6>
-	      </div>
+              <div class="card-header">행사 홍보영상</div>
+	      <br/>
 	      <center>
-		<a href="https://www.youtube.com/shorts/H6zpT8k5X0A" target="_blank">
-		  <img src="/2024/res/2024-Security-at-KAIST-Fair.png" style="width:65%;" class="img-fluid" />
-		</a>
+		<div class="iframe-container" style="width:65%;">
+		  <iframe src="https://www.youtube.com/embed/H6zpT8k5X0A?si=LVguB1zqBJVS3PSQ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+		</div>
+	      </center>
+	    </div>
+
+	    <div class="card mt-3">
+              <div class="card-header">행사 포스터</div>
+	      <br/>
+	      <center>
+		<img src="./res/2024-Security-at-KAIST-Fair.png" style="width:65%;" class="img-fluid" />
 	      </center>
 	      <br/>
             </div>
