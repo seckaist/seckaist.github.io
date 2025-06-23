@@ -93,11 +93,188 @@
       .iframe-container {
           aspect-ratio: 9 / 16;
       }
+
+      /*Famous*/
+      @media (max-width: 600px) {
+        .gallery-img {
+          width: 98vw;
+          height: 160px;
+          max-width: 100%;
+        }
+      }
+      .gallery-wrap {
+          display: flex;
+          flex-wrap: wrap;
+          gap: 16px;
+          justify-content: center;
+          margin-top: 12px;
+        }
+        .gallery-img {
+          width: 340px;
+          height: 220px;
+          object-fit: cover;
+          border-radius: 10px;
+          box-shadow: 0 4px 12px rgba(1,79,149,0.07);
+          transition: transform .2s;
+        }
+        .gallery-img:hover {
+          transform: scale(1.06);
+          box-shadow: 0 8px 20px rgba(1,79,149,0.2);
+          z-index: 1;
+        }
+        #imgModal {
+          display: none;
+          position: fixed;
+          z-index: 9999;
+          left: 0; top: 0;
+          width: 100vw; height: 100vh;
+          background: rgba(0,0,0,0.82);
+          align-items: center;
+          justify-content: center;
+          flex-direction: column;
+          transition: opacity .2s;
+        }
+
     </style>
+    <script>
+      function showModal(src, caption) {
+        document.getElementById('imgModal').style.display = 'flex';
+        document.getElementById('modalImg').src = src;
+        document.getElementById('modalCaption').innerText = caption || '';
+      }
+      function hideModal() {
+        document.getElementById('imgModal').style.display = 'none';
+        document.getElementById('modalImg').src = '';
+        document.getElementById('modalCaption').innerText = '';
+      }
+      
+      window.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape') hideModal();
+      });
+      document.getElementById('imgModal').addEventListener('click', function(e) {
+        if (e.target === this) hideModal();
+      });
+    </script>
   </head>
   <body>
+     <div class="col-lg-8 mx-auto p-4 py-md-5">
 
-    <div class="col-lg-8 mx-auto p-4 py-md-5">
+      
+      <div class="alert-success">
+        🎉 The 2024 Security@KAIST Fair was successfully held on November 26, 2024!<br>
+        Thank you to all participants, speakers, and sponsors.
+      </div>
+
+      <header class="d-flex align-items-center pb-3 mb-5 border-bottom">
+        <a href="/" class="mx-auto text-center">
+          <img src="./logo2.png" alt="Security@KAIST" class="img-fluid" />
+        </a>
+      </header>
+
+      <main>
+        <!-- <center>
+          <img src="./banner.png" alt="Security@KAIST" class="img-fluid" />
+        </center> -->
+        
+        <!-- 행사 스케치/후기 섹션 -->
+        <!-- <div class="row mt-5">
+          <div class="card mb-3">
+            <div class="card-header">2024 행사 스케치 및 결과</div>
+            <div class="card-body">
+              <p class="main-text">
+                <b>2024 Security@KAIST Fair</b> successfully took place on November 26, 2024, at the Yang Young Shin Student Center (N13-1), bringing together over 150 students, faculty, industry guests, and alumni.<br><br>
+                Participants enjoyed hands-on security tech booths, industry networking, alumni talks, technical presentations, and plenty of photo opportunities. Thank you for making the event vibrant and memorable!<br><br>
+                <b>We look forward to seeing you again at Security@KAIST 2025!</b>
+              </p>
+              <ul>
+                <li>Hands-on security experience booths & prize draws</li>
+                <li>Networking with security industry partners</li>
+                <li>Talks and Q&A with alumni and experts</li>
+                <li>Free snacks and drinks, photo zone & souvenirs</li>
+              </ul>
+              <div style="color:#888;font-size:0.95em;margin-top:10px;">
+                <i class="bi bi-camera"></i> See photo highlights below!
+              </div>
+            </div>
+          </div>
+        </div> -->
+
+        <div class="row mt-5">
+          <div class="card mb-3">
+            <div class="card-header">2024 행사 스케치 및 결과</div>
+            <div class="card-body">
+              <p class="main-text">
+                <b>2024 Security@KAIST Fair</b>는 2024년 11월 26일, KAIST 장영신학생회관(N13-1)에서 성황리에 개최되었습니다. 200명 이상의 학생, 교수진, 산업계 관계자, 동문들이 한자리에 모여 뜻깊은 시간을 가졌습니다.<br><br>
+                참가자들은 보안 체험 부스와 다양한 경품 이벤트, 산업계와의 네트워킹, 동문 및 전문가와의 대화, 기술 발표, 그리고 포토존에서의 기념 촬영 등 다채로운 프로그램을 함께 즐겼습니다. 덕분에 행사가 더욱 활기차고 뜻깊게 마무리될 수 있었습니다.<br><br>
+                참석해주신 모든 분들께 진심으로 감사드립니다!<br><br>
+                <b>내년 Security@KAIST 2025 행사에서 다시 만날 수 있기를 기대합니다!</b>
+              </p>
+              <ul>
+                <li>실습형 보안 체험 부스 및 경품 추첨</li>
+                <li>보안 산업 파트너와의 네트워킹</li>
+                <li>동문 및 전문가와의 대화 및 Q&A</li>
+                <li>무료 간식 및 음료, 포토존 & 기념품 </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <!-- 포토 갤러리 -->
+        <div class="card mb-4">
+          <div class="card-header">2024 행사 포토 갤러리</div>
+          <div class="card-body">
+            <div class="gallery-wrap">
+              <img src="./res/이미지1.jpeg" class="gallery-img" alt="2024 행사 사진 1" onclick="showModal(this.src, this.alt)">
+              <img src="./res/이미지2.jpeg" class="gallery-img" alt="2024 행사 사진 2" onclick="showModal(this.src, this.alt)">
+              <img src="./res/이미지3.jpeg" class="gallery-img" alt="2024 행사 사진 3" onclick="showModal(this.src, this.alt)">
+              <img src="./res/이미지4.jpeg" class="gallery-img" alt="2024 행사 사진 4" onclick="showModal(this.src, this.alt)">
+              <img src="./res/이미지5.jpeg" class="gallery-img" alt="2024 행사 사진 5" onclick="showModal(this.src, this.alt)">
+              <img src="./res/이미지6.jpeg" class="gallery-img" alt="2024 행사 사진 6" onclick="showModal(this.src, this.alt)">
+              <img src="./res/이미지7.jpeg" class="gallery-img" alt="2024 행사 사진 7" onclick="showModal(this.src, this.alt)">
+              <img src="./res/이미지8.jpeg" class="gallery-img" alt="2024 행사 사진 8" onclick="showModal(this.src, this.alt)">
+              <img src="./res/이미지9.jpeg" class="gallery-img" alt="2024 행사 사진 9" onclick="showModal(this.src, this.alt)">
+              <img src="./res/이미지10.jpeg" class="gallery-img" alt="2024 행사 사진 10" onclick="showModal(this.src, this.alt)">
+              <img src="./res/이미지11.jpeg" class="gallery-img" alt="2024 행사 사진 11" onclick="showModal(this.src, this.alt)">
+              <img src="./res/이미지12.jpeg" class="gallery-img" alt="2024 행사 사진 12" onclick="showModal(this.src, this.alt)">
+              <!-- <img src="./res/이미지13.jpeg" class="gallery-img" alt="2024 행사 사진 13" onclick="showModal(this.src, this.alt)">
+              <img src="./res/이미지14.jpeg" class="gallery-img" alt="2024 행사 사진 14" onclick="showModal(this.src, this.alt)"> -->
+            </div>
+            <div style="color:#888;font-size:0.97em;margin-top:7px;">
+              *More photos can be found on our official SNS. &nbsp;
+              <a href="https://www.youtube.com/@kaist3380" target="_blank" title="YouTube" style="color:#c4302b;">
+                <i class="bi bi-youtube" style="font-size:1.4em;vertical-align:middle;"></i>
+              </a>
+              <a href="https://www.instagram.com/kaist_gsis/" target="_blank" title="Instagram" style="color:#e1306c;">
+                <i class="bi bi-instagram" style="font-size:1.4em;vertical-align:middle;"></i>
+              </a>
+              <a href="https://www.facebook.com/kaistgsiskaistgsis/" target="_blank" title="Facebook" style="color:#1877f2;">
+                <i class="bi bi-facebook" style="font-size:1.4em;vertical-align:middle;"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <div style="max-width:620px;margin:32px auto 0 auto;">
+          <div style="background:linear-gradient(90deg,#f6fbff 80%,#e7f2fc);box-shadow:0 4px 18px rgba(1,79,149,0.11);border-radius:18px;padding:2rem 1.3rem 2rem 1.3rem;">
+            <h5 style="font-weight:700;letter-spacing:-1px;margin-bottom:16px;text-align:center;">
+              <i class="bi bi-camera-video" style="color:#014f95;font-size:1.25em;vertical-align:-2px;"></i>
+              &nbsp;행사 하이라이트 영상
+            </h5>
+            <video 
+              id="kaistFairVideo"
+              controls 
+              autoplay 
+              muted 
+              playsinline
+              poster="./res/2024-Security-at-KAIST-Fair.jpg"
+              style="width:100%;border-radius:13px;box-shadow:0 4px 20px rgba(1,79,149,0.13);background:#eee;">
+              <source src="./res/security_video.mp4" type="video/mp4">
+              Your browser does not support the video tag.
+            </video>
+          </div>
+        </div>
+
+    <!-- <div class="col-lg-8 mx-auto p-4 py-md-5">
 
       <header class="d-flex align-items-center pb-3 mb-5 border-bottom">
         <a href="/" class="mx-auto text-center">
@@ -109,9 +286,9 @@
 
 	<center>
 	  <img src="./banner.png" alt="Security@KAIST" class="img-fluid" />
-	</center>
+	</center> -->
 
-        <div class="row mt-5">
+        <!-- <div class="row mt-5">
           <div class="container-fluid">
             <div class="card">
               <div class="card-header">장소 및 시간</div>
@@ -234,11 +411,17 @@
 	      <br/>
             </div>
           </div>
-        </div>
-    </div>
+        </div> -->
+    <!-- </div> -->
 
     </main>
 
+</div>
+
+<div id="imgModal" style="display:none;position:fixed;z-index:9999;left:0;top:0;width:100vw;height:100vh;background:rgba(0,0,0,0.82);align-items:center;justify-content:center;">
+  <span onclick="hideModal()" style="position:absolute;top:30px;right:50px;font-size:2.6rem;color:#fff;cursor:pointer;z-index:10000;">&times;</span>
+  <img id="modalImg" src="" alt="" style="max-width:90vw;max-height:85vh;box-shadow:0 8px 24px rgba(0,0,0,0.65);border-radius:16px;">
+  <div id="modalCaption" style="color:#eee;text-align:center;font-size:1.15rem;margin-top:16px;"></div>
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
