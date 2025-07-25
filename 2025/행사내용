@@ -1,0 +1,28 @@
+📍 2025 Security@KAIST Fair 프로그램 안내
+
+🔑 Keynote
+대한민국 보안 연구의 현실 진단과 미래
+
+💬 패널 토의
+대한민국 보안의 미래에 관한 KAIST 교수들의 대담
+
+📚 기술 세미나
+KAIST 최신 보안 연구 발표 (총 18편)
+-대형언어모델의 안전성과 프라이버시를 점검하는 새로운 Red-teaming 방법론
+-셀룰러 이중용도 기술: 감시와 방어 사이의 구조적 딜레마
+-목표 집중형 프로그램 분석
+-Making Password Checkups Work: Designing for Action, Not Apathy
+-Tor 익명성 네트워크의 가용성, 익명성 침해 공격 연구
+-Optimization-Directed Compiler Fuzzing for Continuous Translation Validation
+-Polocolo: A ZK-Friendly Hash Function Based on S-boxes Using Power Residues
+-Automatic Attack Synthesis for Constant Product Market Makers (ISSTA '25 paper)
+-From Harmful Domain Detection to Criminal Organization Mapping: A Research for Evidence-Based Threat Attribution and Network Analysis
+-CROSS-X: Generalised and Stable Cross-Cache Attack on the Linux Kernel
+-TrustyMon: Practical Detection of DOM-based Cross-Site Scripting Attacks Using Trusted Types
+-"XAI 기반 LLM 생성 가짜댓글의 언어패턴 분석 및 탐지(XDAC: XAI-Driven Detection and Attribution of LLM-Generated News Comments in Korean)"
+-Systematic Testing of Context Integrity Violations in Cellular Core Networks
+-PowDew: Detecting Counterfeit Powdered Food Products using a Commodity Smartphone
+-Ambush: A Frontrunning Attack in Batch-Order Fair Systems for Blockchains
+-Forky: Fork State-Aware Differential Fuzzing for Blockchain Consensus Implementations
+-Towards Sound Reassembly of Modern x86-64 Binaries
+-Interstellar: 하드웨어 기반 instruction 모니터링을 통한 런타임 보안 위협 탐지 및 사전 차단
