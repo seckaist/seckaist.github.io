@@ -41,13 +41,37 @@
           <div class="container-fluid">
 
             <div class="alert alert-success">
-              🎉 <b>Security@KAIST Fair 2025</b> is coming soon!
+              🎉 <b>Security@KAIST Fair 2025</b> is coming soon!<br>
+              <div id="dday-display" class="mt-2" style="font-size: 1.3rem; font-weight: bold;"></div>
             </div>
 
             <div class="card">
               <div class="card-header">행사 포스터</div>
               <div class="card-body text-center">
                 <img src="./res/poster.jpeg" style="width:70%;" class="img-fluid" alt="2025 포스터" />
+              </div>
+            </div>
+
+            <div class="card mt-3">
+              <div class="card-header" style="background: linear-gradient(135deg, #014f95 0%, #0056b3 100%);">
+                <i class="bi bi-person-plus"></i> 사전등록
+              </div>
+              <div class="card-body text-center">
+                <h5 class="text-title mb-3">
+                  <i class="bi bi-calendar-check text-primary"></i> 지금 바로 사전등록하세요!
+                </h5>
+                <p class="mb-3" style="color: #6c757d;">
+                  Security@KAIST Fair 2025에 참여하시려면 사전등록이 필요합니다.<br>
+                  사전등록을 통해 더 나은 행사 경험을 제공해드립니다.
+                </p>
+                <a href="https://onoffmix.com/event/327203" target="_blank" class="btn btn-primary btn-lg px-4 py-2" style="font-weight: 600; background: linear-gradient(135deg, #014f95 0%, #0056b3 100%); border: none; box-shadow: 0 4px 15px rgba(1, 79, 149, 0.3);">
+                  <i class="bi bi-box-arrow-up-right me-2"></i>사전등록 하러가기
+                </a>
+                <div class="mt-3">
+                  <small class="text-muted">
+                    <i class="bi bi-info-circle"></i> 외부인 (KAIST 외부) 사전등록 링크입니다
+                  </small>
+                </div>
               </div>
             </div>
 
@@ -84,7 +108,7 @@
                         <li class="mb-2">• 목표 집중형 프로그램 분석</li>
                         <li class="mb-2">• Making Password Checkups Work: Designing for Action, Not Apathy</li>
                         <li class="mb-2">• Tor 익명성 네트워크의 가용성, 익명성 침해 공격 연구</li>
-                        <li class="mb-2">• Optimization-Directed Compiler Fuzzing for Continuous Translation Validation</li>
+                        <li class="mb-2">• 컴파일러 최적화 버그, 번역 검산과 지향성 퍼징으로 바로 잡아내기</li>
                         <li class="mb-2">• Polocolo: A ZK-Friendly Hash Function Based on S-boxes Using Power Residues</li>
                         <li class="mb-2">• Automatic Attack Synthesis for Constant Product Market Makers (ISSTA '25 paper)</li>
                         <li class="mb-2">• From Harmful Domain Detection to Criminal Organization Mapping: A Research for Evidence-Based Threat Attribution and Network Analysis</li>
@@ -136,5 +160,32 @@
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+      function updateDdayDisplay() {
+        // 행사 날짜와 시간 설정 (2025년 8월 25일 13:00)
+        const eventDate = new Date('2025-08-25T13:00:00+09:00');
+        const now = new Date();
+        const timeDiff = eventDate.getTime() - now.getTime();
+        
+        const ddayElement = document.getElementById('dday-display');
+        
+        if (timeDiff > 0) {
+          // 행사 전
+          const days = Math.floor(timeDiff / (1000 * 60 * 60 * 24));
+          ddayElement.innerHTML = `<i class="bi bi-calendar-event text-primary"></i> <span class="text-primary">D-${days}</span>`;
+        } else if (timeDiff > -5 * 60 * 60 * 1000) {  // 행사 종료 후 5시간까지
+          ddayElement.innerHTML = `<i class="bi bi-play-circle-fill text-success"></i> <span class="text-success">행사 진행 중!</span>`;
+        } else {
+          // 행사 종료
+          ddayElement.innerHTML = `<i class="bi bi-check-circle-fill text-secondary"></i> <span class="text-secondary">행사가 종료되었습니다</span>`;
+        }
+      }
+      
+      // 페이지 로드 시 실행
+      updateDdayDisplay();
+      
+      // 1분마다 업데이트
+      setInterval(updateDdayDisplay, 60000);
+    </script>
   </body>
 </html>
