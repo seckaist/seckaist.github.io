@@ -1,0 +1,522 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="author" content="KAIST" />
+    <title>Security@KAIST 2026</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@400;700&family=Noto+Sans+KR:wght@100..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nanum+Pen+Script">
+    <style>
+      * { font-family: "Noto Sans KR", sans-serif; font-weight: 400; }
+      .text-title { color: #014f95; font-weight: 800 !important; }
+      .card { border: none; box-shadow: 0 6px 20px rgba(0, 0, 0, 0.18); }
+      .card-header { color: #18284c; font-weight: bold; font-size: 1.2rem; background-color: #f8c404; text-align: center; }
+      /* 상세 배치도 토글 버튼: 네이비 배경 + 골드 테두리 pill로 '버튼'임을 명확히 */
+      #show-map-btn {
+        background-color: #18284c; color: #fff;
+        border: 2px solid #f8c404; border-radius: 50rem;
+        font-weight: 600; padding: 0.6rem 1.7rem;
+        box-shadow: 0 4px 14px rgba(0, 0, 0, 0.25);
+        transition: transform .15s ease, box-shadow .15s ease, background-color .15s ease;
+      }
+      #show-map-btn:hover, #show-map-btn:focus {
+        background-color: #24365f; color: #fff;
+        transform: translateY(-2px);
+        box-shadow: 0 7px 18px rgba(0, 0, 0, 0.33);
+      }
+      /* 문의 및 공식 채널: 이메일 강조 + 소셜 원형 아이콘 */
+      .contact-email { text-decoration: none; color: #18284c; font-weight: 700; font-size: 1.15rem; }
+      .contact-email:hover { text-decoration: underline; }
+      .social-row { display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap; }
+      .social-btn {
+        width: 52px; height: 52px; border-radius: 50%;
+        display: inline-flex; align-items: center; justify-content: center;
+        background: #18284c; color: #fff; font-size: 1.5rem; text-decoration: none;
+        box-shadow: 0 3px 10px rgba(0, 0, 0, 0.18);
+        transition: transform .15s ease, background-color .15s ease, box-shadow .15s ease;
+      }
+      .social-btn:hover { transform: translateY(-3px); color: #fff; box-shadow: 0 6px 16px rgba(0, 0, 0, 0.28); }
+      .social-btn.yt:hover { background: #ff0000; }
+      .social-btn.ig:hover { background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888); }
+      .social-btn.fb:hover { background: #1877f2; }
+      /* 네이비 버튼 공통: 그림자 + 호버 시 살짝 떠오르며 색 밝아짐 */
+      .btn-navy {
+        background-color: #18284c; color: #fff; border: none; font-weight: 600;
+        box-shadow: 0 4px 14px rgba(0, 0, 0, 0.25);
+        transition: transform .15s ease, box-shadow .15s ease, background-color .15s ease;
+      }
+      .btn-navy:hover, .btn-navy:focus {
+        background-color: #2c3f6b; color: #fff;
+        transform: translateY(-2px);
+        box-shadow: 0 7px 18px rgba(0, 0, 0, 0.33);
+      }
+      .main-text { font-size: 1.2rem; color: #6b7280; margin-top: 15px; }
+      .background-container { width: 100%; height: 250px; position: relative; overflow: hidden; border-radius: 10px; box-shadow: 0px 4px 10px rgba(0,0,0,0.9); background-image: url('/2025/res/banner.jpg'); background-size: cover; background-position: center; background-repeat: no-repeat; display: flex; align-items: center; justify-content: center; text-align: center;}
+      .title-container { text-align: center; color: #fff; padding: 20px; background: rgba(0,0,0,0.7); border-radius: 10px;}
+      .title { color: #fff; font-size: 1.2rem; font-weight: bold; text-shadow: 1px 1px 5px rgba(0,0,0,0.8);}
+      .subtitle { color: #f0f0f0; font-size: 1.0rem; margin-top: 10px; text-shadow: 1px 1px 4px rgba(0,0,0,0.5);}
+      .iframe-container { aspect-ratio: 9/16;}
+      /* 'coming soon' 박스: 네이비 배너 + 흰 글자 (C안) */
+      .alert-success { background: #18284c; color: #fff; font-weight: 700; text-align: center; padding: 1.2em; border-radius: 8px; margin-bottom: 20px; border: none; font-size: 1.2rem; box-shadow: 0 6px 20px rgba(0, 0, 0, 0.18);}
+      /* D-day: 네이비 배경 위 골드로 강조 */
+      .dday-badge { color: #f8c404; font-weight: 800; }
+      .session-col { width: 12.33% !important; min-width: 80px; }
+      .content-col { width: 24.67% !important; min-width: 160px; }
+
+      /* 포스터 배경과 페이지 배경을 이음새 없이 연결 */
+      html, body { overflow-x: hidden; }
+      /* 페이지 전체 배경: .poster-bleed와 '동일한 색-투영 함수'를 갖도록 절대(vw) stop으로 지정.
+         두 요소 모두 좌상단이 원점·폭 100vw·각도 143.0°로 동일하므로 그라데이션 선 시작점(s=0)이 일치 →
+         vw로 지정하면 poster-bleed의 각 stop과 같은 위치(s)에 같은 색이 놓여 경계가 수학적으로 완벽히 이어짐.
+         (poster-bleed L=130.876vw 기준: 7%→9.2vw, 36%→47.1vw, 92%→120.4vw, 100%→130.9vw ...)
+         s>130.9vw(포스터 아래)는 같은 방향으로 자연스럽게 밝아지도록 연장. 페이지 높이/창 크기와 무관. */
+      body {
+        min-height: 100vh;
+        background: linear-gradient(143.0deg,
+          #213b94 0,
+          #243c95 9.2vw,
+          #293d96 19.6vw,
+          #323f97 32.7vw,
+          #3a4097 47.1vw,
+          #404298 60.2vw,
+          #484399 73.3vw,
+          #4d459a 86.4vw,
+          #53479a 99.5vw,
+          #57489b 109.9vw,
+          #59499b 120.4vw,
+          #5c4a9c 130.9vw,
+          #6d5aa8 185vw,
+          #8272b6 240vw) no-repeat;
+      }
+      /* 포스터를 화면 전체 폭으로 감싸는 래퍼 (양옆 여백을 포스터 그라데이션으로 채움) */
+      .poster-bleed {
+        width: 100vw;
+        margin-left: calc(50% - 50vw);
+        /* 크롭된 포스터(비율 1.328)의 대각선 그라데이션(각도 143.0°)을 '같은 변화율'로 경계 밖까지 연장.
+           - 포스터 좌상단 코너 = 7.7%, 우하단 코너 = 92.3% 지점에 정렬
+           - 그 바깥은 같은 기울기로 왼쪽↑ 더 어둡게 / 오른쪽↓ 더 밝게 */
+        background: linear-gradient(143.0deg,
+          #213b94 0%,      /* 포스터 경계 밖(좌상) - 더 어둡게 연장 */
+          #243c95 7%,      /* 포스터 좌상단 코너 */
+          #293d96 15%,
+          #323f97 25%,
+          #3a4097 36%,
+          #404298 46%,
+          #484399 56%,
+          #4d459a 66%,
+          #53479a 76%,
+          #57489b 84%,
+          #59499b 92%,     /* 포스터 우하단 코너 */
+          #5c4a9c 100%);   /* 포스터 경계 밖(우하) - 더 밝게 연장 */
+      }
+      .poster-bleed > img {
+        display: block;
+        width: 66.6667%;   /* 데스크톱: 화면의 2/3 폭 → 양옆은 위 그라데이션이 채움 */
+        margin: 0 auto;    /* 가운데 정렬 */
+      }
+      @media (max-width: 991.98px) {
+        .poster-bleed > img { width: 100%; }   /* 모바일: 화면 꽉 채움 (양옆 여백 없음) */
+        /* 모바일에선 포스터가 100vw(=1.5배 크게)로 표시되어 포스터 그라데이션이 더 넓게 늘어남.
+           포스터 대각선 길이 s=166.24vw 기준으로 각 색을 재배치(데스크톱 stop의 대각선비율×166.24). */
+        body {
+          background: linear-gradient(143.0deg,
+            #243c95 0,
+            #293d96 15.6vw,
+            #323f97 35.2vw,
+            #3a4097 56.7vw,
+            #404298 76.3vw,
+            #484399 95.8vw,
+            #4d459a 115.4vw,
+            #53479a 135.1vw,
+            #57489b 150.7vw,
+            #59499b 166.2vw,   /* 포스터 우하단(하단 경계) */
+            #6d5aa8 260vw,
+            #8272b6 345vw) no-repeat;
+        }
+      }
+    </style>
+  </head>
+  <body>
+
+    <div class="col-lg-8 mx-auto p-4 pt-0 py-md-0">
+      <!--
+      <header class="d-flex align-items-center pb-3 mb-5 border-bottom">
+        <a href="/" class="mx-auto text-center">
+          <img src="./logo2.png" alt="Security@KAIST" class="img-fluid" />
+        </a>
+      </header>
+    -->
+
+      <main>
+        <!-- <center>
+          <img src="./banner.png" alt="Security@KAIST 2026" class="img-fluid" />
+        </center> -->
+        <div class="row">
+          <div class="container-fluid">
+
+            <div class="poster-bleed">
+              <img src="./res/poster.png" alt="2026 포스터" />
+            </div>
+
+            <div class="alert alert-success mt-3">
+              🎉 <b>Security@KAIST Fair 2026</b> is coming soon!<br>
+              <div id="dday-display" class="mt-2" style="font-size: 1.3rem; font-weight: bold;"></div>
+            </div>
+
+            <div class="card mt-3">
+              <div class="card-header" style="background: linear-gradient(135deg, #f8c404 0%, #ffd21a 100%);">
+                <i class="bi bi-person-plus"></i> 사전등록
+              </div>
+              <div class="card-body text-center">
+                <h5 class="mb-3" style="color:#18284c; font-weight:800;">
+                  <i class="bi bi-calendar-check"></i> 지금 바로 사전등록하세요!
+                </h5>
+                <p class="mb-3" style="color:#18284c;">
+                  Security@KAIST Fair 2026에 참여하시려면 사전등록이 필요합니다.<br>
+                  사전등록을 통해 더 나은 행사 경험을 제공해드립니다.
+                </p>
+                <a href="https://onoffmix.com/event/327203" target="_blank" class="btn btn-lg px-4 py-2 btn-navy">
+                  <i class="bi bi-box-arrow-up-right me-2"></i>사전등록 하러가기
+                </a>
+                <div class="mt-3">
+                  <small style="color:#18284c;">
+                    <i class="bi bi-info-circle"></i> 외부인 (KAIST 외부) 사전등록 링크입니다. KAIST 내부인은 누구나 무료 참여 가능합니다.<br>
+                  </small>
+                </div>
+              </div>
+            </div>
+
+            <!--
+            <div class="card mt-3">
+              <div class="card-header">장소 및 시간</div>
+              <div class="card-body">
+                <i class="bi bi-building"></i> 장영신학생회관 (N13-1)<br/>
+                <i class="bi bi-clock"></i> 2026년 9월 10일 (목) 13:00~18:00<br>
+                <span style="color:#999;font-size:0.95em;">* 일정은 추후 변경될 수 있습니다.</span>
+              </div>
+            </div>
+          -->
+
+            <div class="card mt-3">
+              <div class="card-header">상세 프로그램 안내</div>
+              <div class="card-body p-0">
+                <div class="table-responsive">
+                  <table class="table table-bordered mb-0 text-center">
+                    <thead class="table-primary">
+                      <tr>
+                        <th width="12%" class="text-center">시간</th>
+                        <th width="37%" class="text-center" colspan="2">N1, 101호<br><small>기술세미나 트랙A</small></th>
+                        <th width="37%" class="text-center" colspan="2">N1, 114호<br><small>기술세미나 트랙B</small></th>
+                        <th width="14%" class="text-center">N1, 117호<br><small>데모 및 홍보 부스</small></th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr class="bg-primary-subtle">
+                        <td class="fw-bold">13:00 - 13:30</td>
+                        <td colspan="2">
+                          <strong>키노트 연설</strong><br>
+                          <small class="text-muted">차상길 교수</small>
+                        </td>
+                        <td colspan="2" class="text-muted">-</td>
+                        <td rowspan="16" class="align-middle bg-info-subtle">
+                          (상시전시) 데모 및 홍보 부스 전시 & 연구포스터 전시 및 관람 (스티커부착17시까지)
+                        </td>
+                      </tr>
+                      <tr class="bg-primary-subtle">
+                        <td class="fw-bold">13:30 - 14:20</td>
+                        <td colspan="2">
+                          <strong>패널토의</strong><br>
+                          <small class="text-muted">강민석 교수</small>
+                        </td>
+                        <td colspan="2" class="text-muted">-</td>
+                        <!-- 데모/포스터 컬럼 삭제 -->
+                      </tr>
+                      <tr>
+                        <td class="fw-bold">14:20 - 14:30</td>
+                        <td colspan="4" class="table-warning">
+                          <strong>휴식시간</strong>
+                        </td>
+                        <!-- 데모/포스터 컬럼 삭제 -->
+                      </tr>
+                      <tr class="bg-light">
+                        <td class="fw-bold">14:30 - 14:55</td>
+                        <td rowspan="2" class="align-middle bg-primary text-white session-col">
+                          <strong>세션1</strong><br>
+                          <small>좌장 : 김용대 교수</small>
+                        </td>
+                        <td class="content-col">
+                          <small>대형언어모델의 안전성과 프라이버시를 점검하는 새로운 Red-teaming 방법론</small><br>
+                          <small class="text-muted">(손수엘 교수)</small>
+                        </td>
+                        <td rowspan="2" class="align-middle bg-secondary text-white session-col">
+                          <strong>세션2</strong><br>
+                          <small>좌장 : 허기홍 교수</small>
+                        </td>
+                        <td class="content-col">
+                          <small>Making Password Checkups Work: Designing for Action, Not Apathy</small><br>
+                          <small class="text-muted">(Ian Oakley 교수)</small>
+                        </td>
+                        <!-- 데모/포스터 컬럼 삭제 -->
+                      </tr>
+                      <tr class="bg-light">
+                        <td class="fw-bold">14:55 - 15:20</td>
+                        <td class="content-col">
+                          <small>셀룰러 이중용도 기술: 감시와 방어 사이의 구조적 딜레마</small><br>
+                          <small class="text-muted">(김용대 교수)</small>
+                        </td>
+                        <td class="content-col">
+                          <small>목표 집중형 프로그램 분석</small><br>
+                          <small class="text-muted">(허기홍 교수)</small>
+                        </td>
+                        <!-- 데모/포스터 컬럼 삭제 -->
+                      </tr>
+                      <tr>
+                        <td class="fw-bold">15:20 - 16:20</td>
+                        <td colspan="4" class="table-warning">
+                          <strong>휴식시간</strong>
+                        </td>
+                        <!-- 데모/포스터 컬럼 삭제 -->
+                      </tr>
+                      <tr class="bg-warning-subtle">
+                        <td class="fw-bold">16:20 - 16:33</td>
+                        <td rowspan="3" class="align-middle bg-warning text-white session-col">
+                          <strong>세션3</strong><br>
+                          <small>(암호/블록체인보안)</small><br>
+                          <small>좌장 : 정동재(CSRC)</small>
+                        </td>
+                        <td class="content-col">
+                          <small>Polocolo: A ZK-Friendly Hash Function Based on S-boxes Using Power Residues</small><br>
+                          <small class="text-muted">(손민철, 이주영 교수님 연구실)</small>
+                        </td>
+                        <td rowspan="3" class="align-middle bg-danger text-white session-col">
+                          <strong>세션4</strong><br>
+                          <small>(모바일/네트워크보안)</small><br>
+                          <small>좌장 : 최규현(CSRC)</small>
+                        </td>
+                        <td class="content-col">
+                          <small>Tor 익명성 네트워크의 가용성, 익명성 침해 공격 연구</small><br>
+                          <small class="text-muted">(이진서, 강민석 교수님 연구실)</small>
+                        </td>
+                        <!-- 데모/포스터 컬럼 삭제 -->
+                      </tr>
+                      <tr class="bg-warning-subtle">
+                        <td class="fw-bold">16:33 - 16:46</td>
+                        <td class="content-col">
+                          <small>Ambush: A Frontrunning Attack in Batch-Order Fair Systems for Blockchains</small><br>
+                          <small class="text-muted">(박은찬, 강민석 교수님 연구실)</small>
+                        </td>
+                        <td class="content-col">
+                          <small>Systematic Testing of Context Integrity Violations in Cellular Core Networks</small><br>
+                          <small class="text-muted">(손민철, 김용대 교수님 연구실)</small>
+                        </td>
+                        <!-- 데모/포스터 컬럼 삭제 -->
+                      </tr>
+                      <tr class="bg-warning-subtle">
+                        <td class="fw-bold">16:46 - 16:59</td>
+                        <td class="content-col">
+                          <small>Forky: Fork State-Aware Differential Fuzzing for Blockchain Consensus Implementations</small><br>
+                          <small class="text-muted">(남호철, 강민석 교수님 연구실)</small>
+                        </td>
+                        <td class="content-col">
+                          <small>PowDew: Detecting Counterfeit Powdered Food Products using a Commodity Smartphone</small><br>
+                          <small class="text-muted">(윤종혁, 한준 교수님 연구실)</small>
+                        </td>
+                        <!-- 데모/포스터 컬럼 삭제 -->
+                      </tr>
+                      <tr>
+                        <td class="fw-bold">17:00 - 17:10</td>
+                        <td colspan="4" class="table-warning">
+                          <strong>휴식시간</strong>
+                        </td>
+                        <!-- 데모/포스터 컬럼 삭제 -->
+                      </tr>
+                      <tr class="bg-success-subtle">
+                        <td class="fw-bold">17:10 - 17:23</td>
+                        <td rowspan="4" class="align-middle bg-success text-white session-col">
+                          <strong>세션5</strong><br>
+                          <small>(소프트웨어보안)</small><br>
+                          <small>좌장 : 김수민(CSRC)</small>
+                        </td>
+                        <td class="content-col">
+                          <small>컴파일러 최적화 버그, 번역 검산과 지향성 퍼징으로 바로 잡아내기</small><br>
+                          <small class="text-muted">(장봉준, 허기홍 교수님 연구실)</small>
+                        </td>
+                        <td rowspan="4" class="align-middle bg-info text-white session-col">
+                          <strong>세션6</strong><br>
+                          <small>(AI/시스템보안)</small><br>
+                          <small>좌장 : 고기혁(CSRC)</small>
+                        </td>
+                        <td class="content-col">
+                          <small>From Harmful Domain Detection to Criminal Organization Mapping: A Research for Evidence-Based Threat Attribution and Network Analysis</small><br>
+                          <small class="text-muted">(최규현, 사이버보안연구센터)</small>
+                        </td>
+                        <td class="text-muted">-</td>
+                        <!-- 데모/포스터 컬럼 삭제 -->
+                      </tr>
+                      <tr class="bg-success-subtle">
+                        <td class="fw-bold">17:23 - 17:36</td>
+                        <td class="content-col">
+                          <small>Automatic Attack Synthesis for Constant Product Market Makers (ISSTA '25 paper)</small><br>
+                          <small class="text-muted">(한수진, 윤인수 교수님 연구실)</small>
+                        </td>
+                        <td class="content-col">
+                          <small>CROSS-X: Generalised and Stable Cross-Cache Attack on the Linux Kernel</small><br>
+                          <small class="text-muted">(송주현, 윤인수 교수님 연구실)</small>
+                        </td>
+                        <td class="text-muted">-</td>
+                        <!-- 데모/포스터 컬럼 삭제 -->
+                      </tr>
+                      <tr class="bg-success-subtle">
+                        <td class="fw-bold">17:36 - 17:48</td>
+                        <td class="content-col">
+                          <small>TrustyMon: Practical Detection of DOM-based Cross-Site Scripting Attacks Using Trusted Types</small><br>
+                          <small class="text-muted">(박선녀, 손수엘 교수님 연구실)</small>
+                        </td>
+                        <td class="content-col">
+                          <small>Interstellar: 하드웨어 기반 instruction 모니터링을 통한 런타임 보안 위협 탐지 및 사전 차단</small><br>
+                          <small class="text-muted">(송용호, 강병훈 교수님 연구실)</small>
+                        </td>
+                        <td class="text-muted">-</td>
+                        <!-- 데모/포스터 컬럼 삭제 -->
+                      </tr>
+                      <tr class="bg-success-subtle">
+                        <td class="fw-bold">17:48 - 18:00</td>
+                        <td class="content-col">
+                          <small>Towards Sound Reassembly of Modern x86-64 Binaries</small><br>
+                          <small class="text-muted">(김수민, 사이버보안연구센터)</small>
+                        </td>
+                        <td class="content-col">
+                          <small>XAI 기반 LLM 생성 가짜댓글의 언어패턴 분석 및 탐지(XDAC)</small><br>
+                          <small class="text-muted">(고우영, 김용대 교수님 연구실)</small>
+                        </td>
+                        <td class="text-muted">-</td>
+                        <!-- 데모/포스터 컬럼 삭제 -->
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+
+            <div class="text-center my-4">
+              <button id="show-map-btn" class="btn btn-lg" type="button">
+                <i class="bi bi-map"></i> 상세 배치도 보기
+              </button>
+            </div>
+            <div id="pdf-map-container" style="display:none; text-align:center; margin-bottom:2rem;">
+              <embed src="./res/리플렛.pdf" type="application/pdf" width="100%" height="1000px" style="border-radius:10px; box-shadow:0 4px 16px rgba(1,79,149,0.13); background:#fff;" />
+            </div>
+
+            <script>
+              document.addEventListener('DOMContentLoaded', function() {
+                var btn = document.getElementById('show-map-btn');
+                var pdf = document.getElementById('pdf-map-container');
+                btn.addEventListener('click', function() {
+                  if (pdf.style.display === 'none') {
+                    pdf.style.display = 'block';
+                    btn.innerHTML = '<i class="bi bi-x-circle"></i> 상세 배치도 닫기';
+                  } else {
+                    pdf.style.display = 'none';
+                    btn.innerHTML = '<i class="bi bi-map"></i> 상세 배치도 보기';
+                  }
+                });
+              });
+            </script>
+
+            <div class="card mt-3">
+              <div class="card-header">문의 및 공식 채널</div>
+              <div class="card-body text-center">
+                <div class="mb-1" style="color:#18284c; font-weight:600;">
+                  <i class="bi bi-envelope-fill"></i> Email
+                </div>
+                <a class="contact-email" href="mailto:kaistsecurity@kaist.ac.kr">kaistsecurity@kaist.ac.kr</a>
+                <hr style="width:60%; margin:1rem auto; border:0; border-top:1px solid rgba(24,40,76,0.15);">
+                <div class="social-row">
+                  <a class="social-btn yt" href="https://www.youtube.com/channel/UCh7S0IqrKxL8NV6h_p39OTA" target="_blank" aria-label="YouTube"><i class="bi bi-youtube"></i></a>
+                  <a class="social-btn ig" href="https://www.instagram.com/kaist_gsis/" target="_blank" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
+                  <a class="social-btn fb" href="https://www.facebook.com/kaistgsiskaistgsis/?locale=ko_KR" target="_blank" aria-label="Facebook"><i class="bi bi-facebook"></i></a>
+                </div>
+              </div>
+            </div>
+
+            <div class="card mt-3">
+              <div class="card-header">주관</div>
+              <div class="card-body">
+                <div class="d-flex flex-wrap justify-content-center align-items-center gap-4">
+                  <img src="./res/gsis_logo.png" alt="GSIS" style="height:45px; max-width:100%;" />
+                  <img src="./res/csrc-logo.png" alt="CSRC" style="height:80px; max-width:100%;" />
+                </div>
+              </div>
+            </div>
+
+            <div class="card mt-3">
+              <div class="card-header">주최</div>
+              <div class="card-body">
+                <div class="d-flex flex-wrap justify-content-center align-items-center gap-4">
+                  <img src="./res/ict_logo.jpg" alt="과학기술정보통신부" style="height:60px; max-width:100%;" />
+                  <img src="./res/iitp_logo.png" alt="IITP 정보통신기획평가원" style="height:60px; max-width:100%;" />
+                  <img src="./res/kisa_logo.png" alt="KISA 한국인터넷진흥원" style="height:60px; max-width:100%;" />
+                </div>
+              </div>
+            </div>
+
+            <div class="card mt-3">
+              <div class="card-header">지난 행사</div>
+              <div class="card-body text-center">
+                <p class="mb-3" style="color:#18284c;">지난 Security@KAIST Fair의 생생한 현장을 확인해보세요!</p>
+                <a href="/2024/index.html" class="btn btn-lg btn-navy">2024 Security@KAIST</a>
+                <a href="/2025/index.html" class="btn btn-lg btn-navy">2025 Security@KAIST</a>
+              </div>
+            </div>
+
+            <!-- 페이지 하단 여백: 맨 아래로 스크롤해도 마지막 카드가 바닥에 붙지 않도록 -->
+            <div style="height: 80px;"></div>
+
+          </div>
+        </div>
+
+      </main>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+    function updateDdayDisplay() {
+      // 행사 날짜 (2026년 9월 10일)
+      const eventDate = new Date('2026-09-10');
+      
+      // 현재 한국 날짜 구하기 (시간 제거하고 날짜만)
+      const now = new Date();
+      const koreanTimeString = now.toLocaleDateString("en-CA", {timeZone: "Asia/Seoul"}); // YYYY-MM-DD 형식
+      const koreanDate = new Date(koreanTimeString);
+      
+      const ddayElement = document.getElementById('dday-display');
+      
+      // 날짜 차이 계산 (밀리초 -> 일)
+      const timeDiff = eventDate.getTime() - koreanDate.getTime();
+      const daysDiff = Math.floor(timeDiff / (1000 * 60 * 60 * 24));
+      
+      if (daysDiff > 0) {
+        // 행사 전
+        ddayElement.innerHTML = `<span class="dday-badge"><i class="bi bi-calendar-event"></i> D-${daysDiff}</span>`;
+      } else if (daysDiff === 0) {
+        // 행사 당일
+        ddayElement.innerHTML = `<span class="dday-badge"><i class="bi bi-play-circle-fill"></i> 행사 당일!</span>`;
+      } else {
+        // 행사 종료
+        ddayElement.innerHTML = `<span style="color:#c3c9d8;"><i class="bi bi-check-circle-fill"></i> 행사가 종료되었습니다</span>`;
+      }
+    }
+
+    // 페이지 로드 시 실행
+    updateDdayDisplay();
+
+    // 1분마다 업데이트
+    setInterval(updateDdayDisplay, 60000);
+    </script>
+  </body>
+</html>
