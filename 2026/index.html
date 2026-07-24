@@ -68,6 +68,22 @@
       .session-col { width: 12.33% !important; min-width: 80px; }
       .content-col { width: 24.67% !important; min-width: 160px; }
 
+      /* 상세 프로그램 표: 초록 펼쳐보기 토글 */
+      .abstract-toggle { text-decoration: none; font-weight: 600; white-space: nowrap; }
+      .abstract-toggle::before { content: "\25B6\00A0"; font-size: 0.8em; }
+      .abstract-toggle[aria-expanded="true"]::before { content: "\25BC\00A0"; }
+      .abstract-toggle .toggle-open { display: inline; }
+      .abstract-toggle .toggle-close { display: none; }
+      .abstract-toggle[aria-expanded="true"] .toggle-open { display: none; }
+      .abstract-toggle[aria-expanded="true"] .toggle-close { display: inline; }
+      .abstract-box {
+        margin-top: 0.6rem; padding: 0.9rem 1rem;
+        background: #f4f7fc; border: 1px solid #d9e2f0; border-radius: 8px;
+        text-align: left; line-height: 1.6; color: #333;
+      }
+      .abstract-box p { margin: 0 0 0.7rem; }
+      .abstract-box p:last-child { margin-bottom: 0; }
+
       /* 포스터 배경과 페이지 배경을 이음새 없이 연결 */
       html, body { overflow-x: hidden; }
       /* 페이지 전체 배경: .poster-bleed와 '동일한 색-투영 함수'를 갖도록 절대(vw) stop으로 지정.
@@ -209,193 +225,155 @@
                   <table class="table table-bordered mb-0 text-center">
                     <thead class="table-primary">
                       <tr>
-                        <th width="12%" class="text-center">시간</th>
-                        <th width="37%" class="text-center" colspan="2">N1, 101호<br><small>기술세미나 트랙A</small></th>
-                        <th width="37%" class="text-center" colspan="2">N1, 114호<br><small>기술세미나 트랙B</small></th>
-                        <th width="14%" class="text-center">N1, 117호<br><small>데모 및 홍보 부스</small></th>
+                        <th width="18%" class="text-center">시간</th>
+                        <th width="82%" class="text-center">프로그램</th>
                       </tr>
                     </thead>
                     <tbody>
-                      <tr class="bg-primary-subtle">
-                        <td class="fw-bold">13:00 - 13:30</td>
-                        <td colspan="2">
-                          <strong>키노트 연설</strong><br>
-                          <small class="text-muted">차상길 교수</small>
+                      <tr>
+                        <td class="fw-bold align-middle">15:50 ~ 16:02</td>
+                        <td>
+                          <strong>Expecto: 자연어 의도로부터 엄밀한 명세 생성하기</strong><br>
+                          <small class="text-muted">이동재 (허기홍 교수님 연구실)</small><br>
+                          <button class="btn btn-sm btn-link abstract-toggle" type="button" data-bs-toggle="collapse" data-bs-target="#abs-1" aria-expanded="false" aria-controls="abs-1"><span class="toggle-open">자세히</span><span class="toggle-close">접기</span></button>
+                          <div class="collapse" id="abs-1">
+                            <div class="abstract-box">
+                              <p>대규모 언어 모델(LLM)이 발전함에 따라 명세 주도 개발(specification-driven development, SDD)은 소프트웨어 개발에서 유망한 패러다임으로 부상하고 있다. 그러나 자연어 명세에 의존하는 방식은 모호성을 야기하며, 정확성을 보장하기 어렵다. 이러한 문제를 해결하기 위해, 자연어 의도에서 신뢰할 수 있는 엄밀한 명세(formal specification)를 자동으로 추출하는 시스템인 Expecto를 제안한다. 핵심 아이디어는 명세 추출이라는 복잡한 작업을 다루기 쉬운 단위로 분해하는 하향식 모듈형 명세 합성 알고리즘이다. 하향식 합성은 LLM의 추론 복잡도를 낮추고, 추출된 명세의 정확도를 향상시킨다. 실험 결과, Expecto는 단일한 순수 LLM 기반 접근 방식에 비해 추출된 명세의 정확도를 크게 향상시킨다. 또한 Defects4J의 실제 버그가 포함된 프로그램에 적용했을 때, Expecto는 기존 기준선보다 더 많은 버그를 탐지할 수 있는 형식 명세를 성공적으로 생성하였다.</p>
+                            </div>
+                          </div>
                         </td>
-                        <td colspan="2" class="text-muted">-</td>
-                        <td rowspan="16" class="align-middle bg-info-subtle">
-                          (상시전시) 데모 및 홍보 부스 전시 & 연구포스터 전시 및 관람 (스티커부착17시까지)
-                        </td>
-                      </tr>
-                      <tr class="bg-primary-subtle">
-                        <td class="fw-bold">13:30 - 14:20</td>
-                        <td colspan="2">
-                          <strong>패널토의</strong><br>
-                          <small class="text-muted">강민석 교수</small>
-                        </td>
-                        <td colspan="2" class="text-muted">-</td>
-                        <!-- 데모/포스터 컬럼 삭제 -->
                       </tr>
                       <tr>
-                        <td class="fw-bold">14:20 - 14:30</td>
-                        <td colspan="4" class="table-warning">
-                          <strong>휴식시간</strong>
+                        <td class="fw-bold align-middle">16:02 ~ 16:15</td>
+                        <td>
+                          <strong>On the Security Risks of Memory Adaptation and Augmentation in Data-plane DoS Mitigation</strong><br>
+                          <small class="text-muted">남호철 (강민석 교수님 연구실)</small><br>
+                          <button class="btn btn-sm btn-link abstract-toggle" type="button" data-bs-toggle="collapse" data-bs-target="#abs-2" aria-expanded="false" aria-controls="abs-2"><span class="toggle-open">자세히</span><span class="toggle-close">접기</span></button>
+                          <div class="collapse" id="abs-2">
+                            <div class="abstract-box">
+                              <p>Data-plane programmability in commodity switches is reshaping the landscape of denial-of-service (DoS) defense by enabling adaptive, line-rate mitigation strategies. Recent systems like Cerberus [SP'24] augment limited switch memory with control-plane support to rapidly respond to evolving attacks. In this paper, we reveal a subtle yet critical vulnerability in this model; that is, the very mechanisms that enable the defense system’s agility and scalability can be subverted by a new class of coordinated DoS attacks. We present Heracles, the first attack to exploit hardware-level constraints in programmable switches to orchestrate precise resource contention across data-plane and control-plane memory. By leveraging side-channel timing signals, Heracles triggers synchronized augmentation, memory squeezing, and time-window exploitation, which are three orthogonal contention strategies that significantly degrade or even completely disable the DoS mitigation capabilities. We implement and test Heracles against real Tofino hardware and show that it can reliably disrupt DoS defenses across diverse DoS attack profiles, even when using loosely (1–2 second) time-synchronized attack sources. To mitigate this threat, we propose Shield, a multi-layered DoS mitigation sketch architecture that decouples memory operations across control- and data-plane layers, effectively mitigating the Heracles attack while preserving both line-rate performance and detection accuracy.</p>
+                            </div>
+                          </div>
                         </td>
-                        <!-- 데모/포스터 컬럼 삭제 -->
-                      </tr>
-                      <tr class="bg-light">
-                        <td class="fw-bold">14:30 - 14:55</td>
-                        <td rowspan="2" class="align-middle bg-primary text-white session-col">
-                          <strong>세션1</strong><br>
-                          <small>좌장 : 김용대 교수</small>
-                        </td>
-                        <td class="content-col">
-                          <small>대형언어모델의 안전성과 프라이버시를 점검하는 새로운 Red-teaming 방법론</small><br>
-                          <small class="text-muted">(손수엘 교수)</small>
-                        </td>
-                        <td rowspan="2" class="align-middle bg-secondary text-white session-col">
-                          <strong>세션2</strong><br>
-                          <small>좌장 : 허기홍 교수</small>
-                        </td>
-                        <td class="content-col">
-                          <small>Making Password Checkups Work: Designing for Action, Not Apathy</small><br>
-                          <small class="text-muted">(Ian Oakley 교수)</small>
-                        </td>
-                        <!-- 데모/포스터 컬럼 삭제 -->
-                      </tr>
-                      <tr class="bg-light">
-                        <td class="fw-bold">14:55 - 15:20</td>
-                        <td class="content-col">
-                          <small>셀룰러 이중용도 기술: 감시와 방어 사이의 구조적 딜레마</small><br>
-                          <small class="text-muted">(김용대 교수)</small>
-                        </td>
-                        <td class="content-col">
-                          <small>목표 집중형 프로그램 분석</small><br>
-                          <small class="text-muted">(허기홍 교수)</small>
-                        </td>
-                        <!-- 데모/포스터 컬럼 삭제 -->
                       </tr>
                       <tr>
-                        <td class="fw-bold">15:20 - 16:20</td>
-                        <td colspan="4" class="table-warning">
-                          <strong>휴식시간</strong>
+                        <td class="fw-bold align-middle">16:15 ~ 16:28</td>
+                        <td>
+                          <strong>Connecting the Dots: An Investigative Study on Linking Private User Data Across Messaging Apps</strong><br>
+                          <small class="text-muted">이소영 (손수엘 교수님 연구실)</small><br>
+                          <button class="btn btn-sm btn-link abstract-toggle" type="button" data-bs-toggle="collapse" data-bs-target="#abs-3" aria-expanded="false" aria-controls="abs-3"><span class="toggle-open">자세히</span><span class="toggle-close">접기</span></button>
+                          <div class="collapse" id="abs-3">
+                            <div class="abstract-box">
+                              <p>이 연구는 KakaoTalk, Telegram, WhatsApp, Signal, Tinder와 같은 모바일 메신저 앱에서 발생할 수 있는 개인정보 위협을 분석한다. 특히 연락처 검색, SSO 기반 계정 연동, 주변 사용자 검색 기능이 악용될 경우, 여러 플랫폼에 흩어진 사용자 정보를 서로 연결할 수 있음을 보여준다. 실험에서는 전화번호와 프로필 사진을 연결 단서로 사용해 익명 사용자의 이름을 식별하고, 위치를 평균 324m 오차로 추론할 수 있는 cross-platform linking attack을 제시한다. 이를 통해 메신저 앱의 연락처 검색 정책과 계정 연동 기능에 대한 보안 강화가 필요함을 강조한다.</p>
+                            </div>
+                          </div>
                         </td>
-                        <!-- 데모/포스터 컬럼 삭제 -->
-                      </tr>
-                      <tr class="bg-warning-subtle">
-                        <td class="fw-bold">16:20 - 16:33</td>
-                        <td rowspan="3" class="align-middle bg-warning text-white session-col">
-                          <strong>세션3</strong><br>
-                          <small>(암호/블록체인보안)</small><br>
-                          <small>좌장 : 정동재(CSRC)</small>
-                        </td>
-                        <td class="content-col">
-                          <small>Polocolo: A ZK-Friendly Hash Function Based on S-boxes Using Power Residues</small><br>
-                          <small class="text-muted">(손민철, 이주영 교수님 연구실)</small>
-                        </td>
-                        <td rowspan="3" class="align-middle bg-danger text-white session-col">
-                          <strong>세션4</strong><br>
-                          <small>(모바일/네트워크보안)</small><br>
-                          <small>좌장 : 최규현(CSRC)</small>
-                        </td>
-                        <td class="content-col">
-                          <small>Tor 익명성 네트워크의 가용성, 익명성 침해 공격 연구</small><br>
-                          <small class="text-muted">(이진서, 강민석 교수님 연구실)</small>
-                        </td>
-                        <!-- 데모/포스터 컬럼 삭제 -->
-                      </tr>
-                      <tr class="bg-warning-subtle">
-                        <td class="fw-bold">16:33 - 16:46</td>
-                        <td class="content-col">
-                          <small>Ambush: A Frontrunning Attack in Batch-Order Fair Systems for Blockchains</small><br>
-                          <small class="text-muted">(박은찬, 강민석 교수님 연구실)</small>
-                        </td>
-                        <td class="content-col">
-                          <small>Systematic Testing of Context Integrity Violations in Cellular Core Networks</small><br>
-                          <small class="text-muted">(손민철, 김용대 교수님 연구실)</small>
-                        </td>
-                        <!-- 데모/포스터 컬럼 삭제 -->
-                      </tr>
-                      <tr class="bg-warning-subtle">
-                        <td class="fw-bold">16:46 - 16:59</td>
-                        <td class="content-col">
-                          <small>Forky: Fork State-Aware Differential Fuzzing for Blockchain Consensus Implementations</small><br>
-                          <small class="text-muted">(남호철, 강민석 교수님 연구실)</small>
-                        </td>
-                        <td class="content-col">
-                          <small>PowDew: Detecting Counterfeit Powdered Food Products using a Commodity Smartphone</small><br>
-                          <small class="text-muted">(윤종혁, 한준 교수님 연구실)</small>
-                        </td>
-                        <!-- 데모/포스터 컬럼 삭제 -->
                       </tr>
                       <tr>
-                        <td class="fw-bold">17:00 - 17:10</td>
-                        <td colspan="4" class="table-warning">
-                          <strong>휴식시간</strong>
+                        <td class="fw-bold align-middle">16:28 ~ 16:40</td>
+                        <td>
+                          <strong>Branch-Level Fault Localization in ADS Planning via Temporal Coverage Analysis</strong><br>
+                          <small class="text-muted">우상민 (김용대 교수님 연구실)</small><br>
+                          <button class="btn btn-sm btn-link abstract-toggle" type="button" data-bs-toggle="collapse" data-bs-target="#abs-4" aria-expanded="false" aria-controls="abs-4"><span class="toggle-open">자세히</span><span class="toggle-close">접기</span></button>
+                          <div class="collapse" id="abs-4">
+                            <div class="abstract-box">
+                              <p>Planning failures in Automated Driving Systems (ADS) are increasingly detected through simulation-based testing, yet localizing their root causes within planning code remains a major challenge. Planning modules execute complex rule-based decision logic over hundreds of frames in a closed-loop interaction with the environment, where faults trigger observable failures only after temporal gaps and under specific execution contexts. These characteristics make traditional spectrum-based fault localization ineffective, as faulty behavior is obscured by execution-level coverage aggregation and limited test diversity. In this paper, we study the problem of debugging planning failures and present a temporal coverage analysis approach for localizing faults in rule-based planning modules. Our key insight is that, while execution-aggregated coverage masks fault behavior, frame-level execution dynamics reveal distinctive temporal signatures that indicate when and how faulty branches activate. Leveraging this insight, our approach first identifies a suspicious frame using planning semantics, and then ranks candidate branches by analyzing their execution behavior within a localized temporal window. We evaluate our approach on 221 reproducible non-collision Apollo planning failures, covering immobility and emergency mission failures. Our results show that temporal coverage analysis enables accurate suspicious-frame identification and substantially reduces branch inspection effort compared to oracle-based and random baselines, effectively localizing faults from a single failing execution. We further analyze failure cases that lack observable execution signals to clarify the fundamental limits of execution-based localization. Overall, this work demonstrates that temporal execution analysis provides a practical and effective foundation for debugging planning failures in rule-based ADS planning modules.</p>
+                            </div>
+                          </div>
                         </td>
-                        <!-- 데모/포스터 컬럼 삭제 -->
                       </tr>
-                      <tr class="bg-success-subtle">
-                        <td class="fw-bold">17:10 - 17:23</td>
-                        <td rowspan="4" class="align-middle bg-success text-white session-col">
-                          <strong>세션5</strong><br>
-                          <small>(소프트웨어보안)</small><br>
-                          <small>좌장 : 김수민(CSRC)</small>
+                      <tr>
+                        <td class="fw-bold align-middle">16:40 ~ 16:53</td>
+                        <td>
+                          <strong>Denied by Border: Denial-of-Service Attack Exploiting Location Restrictions in Non-Terrestrial Networks</strong><br>
+                          <small class="text-muted">김광민 (김용대 교수님 연구실)</small><br>
+                          <button class="btn btn-sm btn-link abstract-toggle" type="button" data-bs-toggle="collapse" data-bs-target="#abs-5" aria-expanded="false" aria-controls="abs-5"><span class="toggle-open">자세히</span><span class="toggle-close">접기</span></button>
+                          <div class="collapse" id="abs-5">
+                            <div class="abstract-box">
+                              <p>본 발표에서는 3GPP 비지상 네트워크(NTN)의 위치 기반 접속 제한 절차를 악용한 새로운 서비스 거부 공격인 Denied by Border를 소개한다. 위성 빔은 국경을 넘어 넓은 지역을 커버할 수 있지만, 이동통신 사업 허가와 규제는 국가마다 다르기 때문에 허가받지 않은 지역까지 서비스가 제공될 수 있다. 이를 방지하기 위해 NTN은 위성 기지국이 보고한 위치 정보를 바탕으로 특정 지역에서의 이동통신 접속을 제한한다. 그러나 네트워크가 단말의 실제 위치보다 위성 기지국이 제공한 위치 정보를 신뢰한다는 점을 이용하면, 공격자는 피해 단말의 시그널링 메시지를 서비스 금지 지역으로 중계하여 네트워크가 정상적인 접속 거절 메시지를 생성하도록 유도할 수 있다. 해당 메시지는 무결성 보호가 적용되어 있어 피해 단말은 이를 정상적인 네트워크 명령으로 받아들이고 통신사 접속을 차단하게 된다.</p>
+                              <p>상용 NTN 지원 단말을 대상으로 평가한 결과, 공격으로 인해 지속적인 서비스 거부 상태가 발생했으며, 반복 공격을 통해 통신 차단을 연장할 수 있음을 확인했다. 또한 NTN에서 유도된 접속 제한이 동일한 통신망 식별자를 사용하는 지상망 접속으로까지 확산될 수 있고, 일부 구현에서는 지상망 환경에서도 접속 차단 문제가 발생할 수 있음을 보였다. 본 연구는 기존 표준에서 제안하는 위치 검증 기법만으로는 이를 우회하려는 공격자를 충분히 방어하기 어렵다는 점을 분석하고, 프로토콜 변경 없이 적용할 수 있는 완화 방안을 제안한다. 해당 취약점은 GSMA에 책임 있는 공개 절차를 통해 보고되어 확인을 받았으며, 현재 관련 표준화 단체와 후속 대응을 논의하고 있다.</p>
+                            </div>
+                          </div>
                         </td>
-                        <td class="content-col">
-                          <small>컴파일러 최적화 버그, 번역 검산과 지향성 퍼징으로 바로 잡아내기</small><br>
-                          <small class="text-muted">(장봉준, 허기홍 교수님 연구실)</small>
-                        </td>
-                        <td rowspan="4" class="align-middle bg-info text-white session-col">
-                          <strong>세션6</strong><br>
-                          <small>(AI/시스템보안)</small><br>
-                          <small>좌장 : 고기혁(CSRC)</small>
-                        </td>
-                        <td class="content-col">
-                          <small>From Harmful Domain Detection to Criminal Organization Mapping: A Research for Evidence-Based Threat Attribution and Network Analysis</small><br>
-                          <small class="text-muted">(최규현, 사이버보안연구센터)</small>
-                        </td>
-                        <td class="text-muted">-</td>
-                        <!-- 데모/포스터 컬럼 삭제 -->
                       </tr>
-                      <tr class="bg-success-subtle">
-                        <td class="fw-bold">17:23 - 17:36</td>
-                        <td class="content-col">
-                          <small>Automatic Attack Synthesis for Constant Product Market Makers (ISSTA '25 paper)</small><br>
-                          <small class="text-muted">(한수진, 윤인수 교수님 연구실)</small>
+                      <tr>
+                        <td class="fw-bold align-middle">16:53 ~ 17:05</td>
+                        <td>
+                          <strong>Function-Level Fuzzing for RTOS Kernels with RTCon</strong><br>
+                          <small class="text-muted">이은규 (윤인수 교수님 연구실)</small><br>
+                          <button class="btn btn-sm btn-link abstract-toggle" type="button" data-bs-toggle="collapse" data-bs-target="#abs-6" aria-expanded="false" aria-controls="abs-6"><span class="toggle-open">자세히</span><span class="toggle-close">접기</span></button>
+                          <div class="collapse" id="abs-6">
+                            <div class="abstract-box">
+                              <p>Real-Time Operating System (RTOS) is widely used in embedded systems with its various subsystems such as Bluetooth and Wi-Fi. As RTOS functionality continues to expand, the corresponding attack surface also increases, creating greater exposure to security threats. Nevertheless, existing dynamic testing approaches, such as fuzzing, struggle to thoroughly exercise deeply embedded kernel functions because invoking these functions often requires complex execution contexts.</p>
+                              <p>In this talk, we introduce a context-adaptive function-level fuzzer for RTOS kernels. RTCon enables function-level fuzzing of arbitrary RTOS kernel functions by adaptively generating execution contexts. It also uses multi-layer classification to prioritize high-confidence crashes. Evaluated on Zephyr, RIOT, FreeRTOS, and ThreadX, RTCon found 27 bugs, including 25 previously unknown vulnerabilities, and received 14 CVEs. Its crash classifier achieved 92.7% precision for high-confidence crashes, compared with 5.8% for low-confidence ones.</p>
+                            </div>
+                          </div>
                         </td>
-                        <td class="content-col">
-                          <small>CROSS-X: Generalised and Stable Cross-Cache Attack on the Linux Kernel</small><br>
-                          <small class="text-muted">(송주현, 윤인수 교수님 연구실)</small>
-                        </td>
-                        <td class="text-muted">-</td>
-                        <!-- 데모/포스터 컬럼 삭제 -->
                       </tr>
-                      <tr class="bg-success-subtle">
-                        <td class="fw-bold">17:36 - 17:48</td>
-                        <td class="content-col">
-                          <small>TrustyMon: Practical Detection of DOM-based Cross-Site Scripting Attacks Using Trusted Types</small><br>
-                          <small class="text-muted">(박선녀, 손수엘 교수님 연구실)</small>
+                      <tr>
+                        <td class="fw-bold align-middle">17:05 ~ 17:17</td>
+                        <td>
+                          <strong>iROV: Breaking the Silence of RPKI with Interactive Validation</strong><br>
+                          <small class="text-muted">김윤수 (강민석 교수님 연구실)</small><br>
+                          <button class="btn btn-sm btn-link abstract-toggle" type="button" data-bs-toggle="collapse" data-bs-target="#abs-7" aria-expanded="false" aria-controls="abs-7"><span class="toggle-open">자세히</span><span class="toggle-close">접기</span></button>
+                          <div class="collapse" id="abs-7">
+                            <div class="abstract-box">
+                              <p>While Route Origin Validation (ROV) effectively mitigates prefix hijacking, it drops BGP updates that are inconsistent with currently published ROAs without consulting the prefix owner. This leaves resource owners unaware of benign misconfigurations, blind to prefix hijacking attacks, and unable to execute urgent routing maneuvers like DDoS redirection. We propose iROV to address these limitations by transforming validation from a static local decision into an interactive, owner-assisted process. iROV enables routers to query owners for “Just-in-Time” authorization of invalid routes. To mitigate availability threats introduced by this interactivity, iROV employs validity stapling to suppress redundant queries, and rate-limited querying to prevent targeted abuse. Large-scale simulations and a prototype implementation demonstrate that iROV restores reachability for urgent route changes from 23% to nearly 90%, and delivers rapid feedback on anomalies with granular impact estimation, while incurring negligible overhead.</p>
+                            </div>
+                          </div>
                         </td>
-                        <td class="content-col">
-                          <small>Interstellar: 하드웨어 기반 instruction 모니터링을 통한 런타임 보안 위협 탐지 및 사전 차단</small><br>
-                          <small class="text-muted">(송용호, 강병훈 교수님 연구실)</small>
-                        </td>
-                        <td class="text-muted">-</td>
-                        <!-- 데모/포스터 컬럼 삭제 -->
                       </tr>
-                      <tr class="bg-success-subtle">
-                        <td class="fw-bold">17:48 - 18:00</td>
-                        <td class="content-col">
-                          <small>Towards Sound Reassembly of Modern x86-64 Binaries</small><br>
-                          <small class="text-muted">(김수민, 사이버보안연구센터)</small>
+                      <tr>
+                        <td class="fw-bold align-middle">17:17 ~ 17:30</td>
+                        <td>
+                          <strong>Hide-and-Sweep: Detecting Concealed Cameras via LED Illumination Sweeps</strong><br>
+                          <small class="text-muted">윤종혁 (한준 교수님 연구실)</small><br>
+                          <button class="btn btn-sm btn-link abstract-toggle" type="button" data-bs-toggle="collapse" data-bs-target="#abs-8" aria-expanded="false" aria-controls="abs-8"><span class="toggle-open">자세히</span><span class="toggle-close">접기</span></button>
+                          <div class="collapse" id="abs-8">
+                            <div class="abstract-box">
+                              <p>Hidden cameras have increasingly infiltrated hotel and Airbnb rooms, posing serious privacy risks. Detecting such cameras is challenging because they are visually inconspicuous and often embedded inside everyday objects. Even worse, existing handheld detectors are manual and also rely on single-angle illumination and hence suffer from high false-positive rates. We present SweepLED (pronounced "sweepled"), a practical hidden camera detection system that operates on a commodity smartphone augmented with an unobtrusive LED-embedded case. SweepLED performs LED sweeping - a controlled sequence of multi-angle illumination - while the user simply holds the phone still by hand, enabling the camera to capture how reflections evolve under changing lighting. This reveals stable, lens-specific cues that distinguish hidden camera lenses from ordinary reflective objects, enabling robust detection with low user effort. We implement SweepLED using a compact hardware add-on and evaluate it in realistic environments containing 12 hidden-camera objects and 18 commonly reflective non-camera items. Our results demonstrate that SweepLED provides accurate and reliable hidden-camera detection using only unobtrusive smartphone-compatible hardware, achieving approximately 94% detection accuracy with a sweep time of under 5 s and a core component cost of less than USD $7.</p>
+                            </div>
+                          </div>
                         </td>
-                        <td class="content-col">
-                          <small>XAI 기반 LLM 생성 가짜댓글의 언어패턴 분석 및 탐지(XDAC)</small><br>
-                          <small class="text-muted">(고우영, 김용대 교수님 연구실)</small>
+                      </tr>
+                      <tr>
+                        <td class="fw-bold align-middle">17:30 ~ 17:42</td>
+                        <td>
+                          <strong>양자시대의 보안 준비하기</strong><br>
+                          <small class="text-muted">한민기</small><br>
+                          <button class="btn btn-sm btn-link abstract-toggle" type="button" data-bs-toggle="collapse" data-bs-target="#abs-9" aria-expanded="false" aria-controls="abs-9"><span class="toggle-open">자세히</span><span class="toggle-close">접기</span></button>
+                          <div class="collapse" id="abs-9">
+                            <div class="abstract-box">
+                              <p>양자컴퓨터의 빠른 발전과 함께 기존 암호와 보안 체계의 안전성에 대한 우려가 커지고 있다. 이에 따라 세계적으로 기존 암호를 양자컴퓨터에 안전한 양자내성암호로 변경하려는 국가적 노력들이 이어지고 있다. 이 발표에서는 양자컴퓨터의 현재 발전 상황을 간략하게 돌아보고, 양자컴퓨터에 대한 암호학계의 대비와 새로운 기회에 대해 논의할 것이다.</p>
+                            </div>
+                          </div>
                         </td>
-                        <td class="text-muted">-</td>
-                        <!-- 데모/포스터 컬럼 삭제 -->
+                      </tr>
+                      <tr>
+                        <td class="fw-bold align-middle">17:42 ~ 17:54</td>
+                        <td>
+                          <strong>Leveraging Biometric-Rich Hand Gestures for Head-Mounted Display Authentication</strong><br>
+                          <small class="text-muted">Ian Oakley</small><br>
+                          <button class="btn btn-sm btn-link abstract-toggle" type="button" data-bs-toggle="collapse" data-bs-target="#abs-10" aria-expanded="false" aria-controls="abs-10"><span class="toggle-open">자세히</span><span class="toggle-close">접기</span></button>
+                          <div class="collapse" id="abs-10">
+                            <div class="abstract-box">
+                              <p>User authentication on head-mounted displays (HMDs) relies on passwords, which are cumbersome to input and susceptible to shoulder-surfing attacks. Recent research has revealed that behavioral signals collected during common HMD tasks are highly distinctive between users. Building on these findings, this paper presents a knowledge-driven behavioral authentication system for HMDs. Our system leverages user-defined gestures as cues and trains an anomaly detector on hand joint motion signals for each user. To evaluate effectiveness, we conducted a comprehensive multi-session user study (n = 20) and an observation attack study (n = 10). The results show that gestures secured with joint motions are resilient to worst-case scenario video-based observation attacks (AUC = 0.97, EER = 3.58%) and maintain high recall performance over one week (AUC = 0.93, EER = 9.82%). These findings suggest that user-generated biometric hand gestures offer a promising approach to securing HMDs.</p>
+                            </div>
+                          </div>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td class="fw-bold align-middle">17:54 ~ 18:06</td>
+                        <td>
+                          <strong>Precise Type Inference for Next-Generation EVM Decompilation</strong><br>
+                          <small class="text-muted">김정현 (차상길 교수님 연구실)</small><br>
+                          <button class="btn btn-sm btn-link abstract-toggle" type="button" data-bs-toggle="collapse" data-bs-target="#abs-11" aria-expanded="false" aria-controls="abs-11"><span class="toggle-open">자세히</span><span class="toggle-close">접기</span></button>
+                          <div class="collapse" id="abs-11">
+                            <div class="abstract-box">
+                              <p>Analyzing EVM bytecode is imperative because nearly 45% of smart contracts on the Ethereum blockchain lack publicly available source code. While type inference is pivotal for EVM bytecode analysis, it remains unsolved because (1) current tools can only handle a subset of Solidity expressions, and (2) they often produce imprecise results due to unsound heuristics they employ. Furthermore, there is no comprehensive dataset with precise ground truth for evaluating EVM type inference, which hinders the development of new tools and the evaluation of existing ones. Thus, we propose EVMpress, a novel bytecode analysis framework that enables accurate type inference for Solidity expressions found in EVM bytecode. We evaluate EVMpress on the largest-to-date dataset of EVM bytecode containing more than 370K real-world contracts with precise ground truth for every function and variable. Our evaluation results show that EVMpress significantly outperforms existing state-of-the-art tools in terms of its coverage and accuracy. We publicize our dataset as well as our implementation of EVMpress to facilitate future research in EVM bytecode analysis.</p>
+                            </div>
+                          </div>
+                        </td>
                       </tr>
                     </tbody>
                   </table>
@@ -469,8 +447,10 @@
               <div class="card-header">지난 행사</div>
               <div class="card-body text-center">
                 <p class="mb-3" style="color:#18284c;">지난 Security@KAIST Fair의 생생한 현장을 확인해보세요!</p>
-                <a href="/2024/index.html" class="btn btn-lg btn-navy">2024 Security@KAIST</a>
-                <a href="/2025/index.html" class="btn btn-lg btn-navy">2025 Security@KAIST</a>
+                <div class="d-flex flex-wrap justify-content-center gap-2">
+                  <a href="/2024/index.html" class="btn btn-lg btn-navy">2024 Security@KAIST</a>
+                  <a href="/2025/index.html" class="btn btn-lg btn-navy">2025 Security@KAIST</a>
+                </div>
               </div>
             </div>
 
