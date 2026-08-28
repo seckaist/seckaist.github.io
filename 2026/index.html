@@ -94,20 +94,20 @@
       body {
         min-height: 100vh;
         background: linear-gradient(143.0deg,
-          #213b94 0,
-          #243c95 9.2vw,
-          #293d96 19.6vw,
-          #323f97 32.7vw,
-          #3a4097 47.1vw,
-          #404298 60.2vw,
-          #484399 73.3vw,
-          #4d459a 86.4vw,
-          #53479a 99.5vw,
+          #193c96 0,
+          #1e3c96 9.2vw,
+          #233c96 19.6vw,
+          #2f3f97 32.7vw,
+          #394098 47.1vw,
+          #404297 60.2vw,
+          #484499 73.3vw,
+          #4e459a 86.4vw,
+          #54479b 99.5vw,
           #57489b 109.9vw,
-          #59499b 120.4vw,
-          #5c4a9c 130.9vw,
-          #6d5aa8 185vw,
-          #8272b6 240vw) no-repeat;
+          #58499a 120.4vw,
+          #594a99 130.9vw,
+          #6a5aa5 185vw,
+          #7f72b3 240vw) no-repeat;
       }
       /* 포스터를 화면 전체 폭으로 감싸는 래퍼 (양옆 여백을 포스터 그라데이션으로 채움) */
       .poster-bleed {
@@ -117,18 +117,18 @@
            - 포스터 좌상단 코너 = 7.7%, 우하단 코너 = 92.3% 지점에 정렬
            - 그 바깥은 같은 기울기로 왼쪽↑ 더 어둡게 / 오른쪽↓ 더 밝게 */
         background: linear-gradient(143.0deg,
-          #213b94 0%,      /* 포스터 경계 밖(좌상) - 더 어둡게 연장 */
-          #243c95 7%,      /* 포스터 좌상단 코너 */
-          #293d96 15%,
-          #323f97 25%,
-          #3a4097 36%,
-          #404298 46%,
-          #484399 56%,
-          #4d459a 66%,
-          #53479a 76%,
+          #193c96 0%,      /* 포스터 경계 밖(좌상) - 더 어둡게 연장 */
+          #1e3c96 7%,      /* 포스터 좌상단 코너 */
+          #233c96 15%,
+          #2f3f97 25%,
+          #394098 36%,
+          #404297 46%,
+          #484499 56%,
+          #4e459a 66%,
+          #54479b 76%,
           #57489b 84%,
-          #59499b 92%,     /* 포스터 우하단 코너 */
-          #5c4a9c 100%);   /* 포스터 경계 밖(우하) - 더 밝게 연장 */
+          #58499a 92%,     /* 포스터 우하단 코너 */
+          #594a99 100%);   /* 포스터 경계 밖(우하) - 더 밝게 연장 */
       }
       .poster-bleed > img {
         display: block;
@@ -141,18 +141,18 @@
            포스터 대각선 길이 s=166.24vw 기준으로 각 색을 재배치(데스크톱 stop의 대각선비율×166.24). */
         body {
           background: linear-gradient(143.0deg,
-            #243c95 0,
-            #293d96 15.6vw,
-            #323f97 35.2vw,
-            #3a4097 56.7vw,
-            #404298 76.3vw,
-            #484399 95.8vw,
-            #4d459a 115.4vw,
-            #53479a 135.1vw,
+            #1e3c96 0,
+            #233c96 15.6vw,
+            #2f3f97 35.2vw,
+            #394098 56.7vw,
+            #404297 76.3vw,
+            #484499 95.8vw,
+            #4e459a 115.4vw,
+            #54479b 135.1vw,
             #57489b 150.7vw,
-            #59499b 166.2vw,   /* 포스터 우하단(하단 경계) */
-            #6d5aa8 260vw,
-            #8272b6 345vw) no-repeat;
+            #58499a 166.2vw,   /* 포스터 우하단(하단 경계) */
+            #6a5aa5 260vw,
+            #7f72b3 345vw) no-repeat;
         }
       }
     </style>
@@ -176,7 +176,7 @@
           <div class="container-fluid">
 
             <div class="poster-bleed">
-              <img src="./res/poster.png" alt="2026 포스터" />
+              <img src="./res/poster.jpg" alt="2026 포스터" />
             </div>
 
             <div class="alert alert-success mt-3">
@@ -940,7 +940,8 @@
               <div class="card-header">주관</div>
               <div class="card-body">
                 <div class="d-flex flex-wrap justify-content-center align-items-center gap-4">
-                  <img src="./res/gsis_logo.png" alt="GSIS" style="height:45px; max-width:100%;" />
+                  <img src="./res/kaist_logo.png" alt="KAIST" style="height:45px; max-width:100%;" />
+                  <img src="./res/gsis_logo.png" alt="GSIS" style="height:70px; max-width:100%; transform: translateY(6px);" />
                   <img src="./res/csrc-logo.png" alt="CSRC" style="height:80px; max-width:100%;" />
                 </div>
               </div>
