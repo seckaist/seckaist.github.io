@@ -94,20 +94,20 @@
       body {
         min-height: 100vh;
         background: linear-gradient(143.0deg,
-          #213b94 0,
-          #243c95 9.2vw,
-          #293d96 19.6vw,
-          #323f97 32.7vw,
-          #3a4097 47.1vw,
-          #404298 60.2vw,
-          #484399 73.3vw,
-          #4d459a 86.4vw,
-          #53479a 99.5vw,
+          #193c96 0,
+          #1e3c96 9.2vw,
+          #233c96 19.6vw,
+          #2f3f97 32.7vw,
+          #394098 47.1vw,
+          #404297 60.2vw,
+          #484499 73.3vw,
+          #4e459a 86.4vw,
+          #54479b 99.5vw,
           #57489b 109.9vw,
-          #59499b 120.4vw,
-          #5c4a9c 130.9vw,
-          #6d5aa8 185vw,
-          #8272b6 240vw) no-repeat;
+          #58499a 120.4vw,
+          #594a99 130.9vw,
+          #6a5aa5 185vw,
+          #7f72b3 240vw) no-repeat;
       }
       /* 포스터를 화면 전체 폭으로 감싸는 래퍼 (양옆 여백을 포스터 그라데이션으로 채움) */
       .poster-bleed {
@@ -117,18 +117,18 @@
            - 포스터 좌상단 코너 = 7.7%, 우하단 코너 = 92.3% 지점에 정렬
            - 그 바깥은 같은 기울기로 왼쪽↑ 더 어둡게 / 오른쪽↓ 더 밝게 */
         background: linear-gradient(143.0deg,
-          #213b94 0%,      /* 포스터 경계 밖(좌상) - 더 어둡게 연장 */
-          #243c95 7%,      /* 포스터 좌상단 코너 */
-          #293d96 15%,
-          #323f97 25%,
-          #3a4097 36%,
-          #404298 46%,
-          #484399 56%,
-          #4d459a 66%,
-          #53479a 76%,
+          #193c96 0%,      /* 포스터 경계 밖(좌상) - 더 어둡게 연장 */
+          #1e3c96 7%,      /* 포스터 좌상단 코너 */
+          #233c96 15%,
+          #2f3f97 25%,
+          #394098 36%,
+          #404297 46%,
+          #484499 56%,
+          #4e459a 66%,
+          #54479b 76%,
           #57489b 84%,
-          #59499b 92%,     /* 포스터 우하단 코너 */
-          #5c4a9c 100%);   /* 포스터 경계 밖(우하) - 더 밝게 연장 */
+          #58499a 92%,     /* 포스터 우하단 코너 */
+          #594a99 100%);   /* 포스터 경계 밖(우하) - 더 밝게 연장 */
       }
       .poster-bleed > img {
         display: block;
@@ -141,18 +141,18 @@
            포스터 대각선 길이 s=166.24vw 기준으로 각 색을 재배치(데스크톱 stop의 대각선비율×166.24). */
         body {
           background: linear-gradient(143.0deg,
-            #243c95 0,
-            #293d96 15.6vw,
-            #323f97 35.2vw,
-            #3a4097 56.7vw,
-            #404298 76.3vw,
-            #484399 95.8vw,
-            #4d459a 115.4vw,
-            #53479a 135.1vw,
+            #1e3c96 0,
+            #233c96 15.6vw,
+            #2f3f97 35.2vw,
+            #394098 56.7vw,
+            #404297 76.3vw,
+            #484499 95.8vw,
+            #4e459a 115.4vw,
+            #54479b 135.1vw,
             #57489b 150.7vw,
-            #59499b 166.2vw,   /* 포스터 우하단(하단 경계) */
-            #6d5aa8 260vw,
-            #8272b6 345vw) no-repeat;
+            #58499a 166.2vw,   /* 포스터 우하단(하단 경계) */
+            #6a5aa5 260vw,
+            #7f72b3 345vw) no-repeat;
         }
       }
     </style>
@@ -176,7 +176,7 @@
           <div class="container-fluid">
 
             <div class="poster-bleed">
-              <img src="./res/poster.png" alt="2026 포스터" />
+              <img src="./res/poster.jpg" alt="2026 포스터" />
             </div>
 
             <div class="alert alert-success mt-3">
@@ -492,6 +492,30 @@
                       </tr>
                       <tr>
                         <td>
+                          <strong>Beyond Finding Functions: A Component-Level Study of Function Identification</strong><br>
+                          <small class="text-muted">김세훈 (차상길 교수님 연구실)</small><br>
+                          <button class="btn btn-sm btn-link abstract-toggle" type="button" data-bs-toggle="collapse" data-bs-target="#abs-p36" aria-expanded="false" aria-controls="abs-p36"><span class="toggle-open">자세히</span><span class="toggle-close">접기</span></button>
+                          <div class="collapse" id="abs-p36">
+                            <div class="abstract-box">
+                              <p>Function identification is a prerequisite for binary analysis, but final precision and recall do not explain which assumptions inside an identifier actually hold. This work studies function identification at the component level by decomposing common logic into assumptions about call targets, tail calls, unwind metadata, jump tables, code/data separation, and return behavior. We build a ground-truth pipeline for these intermediate facts and evaluate stripped Coreutils, Binutils, and SPEC binaries compiled with GCC/ Clang across multiple architectures, PIE settings, and optimization levels. Our analysis shows that assumption failures are not uniformly distributed, but depend on architecture-, compiler-, and optimization-specific binary idioms. Some metadata sources provide precise but incomplete evidence, some control-flow patterns blur the boundary between local edges and interprocedural transfers, and some compiler-generated code shapes do not match source-level function structure. By measuring these failures directly, the study explains how individual components create candidates, miss valid entries, or require stronger ground truth beyond final function-entry labels.</p>
+                            </div>
+                          </div>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>
+                          <strong>일단 묻고 더블로 가: 추측 후 검증을 통한 제어 흐름 그래프 복원</strong><br>
+                          <small class="text-muted">김정현 (차상길 교수님 연구실)</small><br>
+                          <button class="btn btn-sm btn-link abstract-toggle" type="button" data-bs-toggle="collapse" data-bs-target="#abs-p39" aria-expanded="false" aria-controls="abs-p39"><span class="toggle-open">자세히</span><span class="toggle-close">접기</span></button>
+                          <div class="collapse" id="abs-p39">
+                            <div class="abstract-box">
+                              <p>(추가예정)</p>
+                            </div>
+                          </div>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>
                           <strong>TestCraft: Intel 명세 기반 자동 테스트 생성 프레임워크</strong><br>
                           <small class="text-muted">김준태 (사이버보안연구센터)</small><br>
                           <button class="btn btn-sm btn-link abstract-toggle" type="button" data-bs-toggle="collapse" data-bs-target="#abs-p6" aria-expanded="false" aria-controls="abs-p6"><span class="toggle-open">자세히</span><span class="toggle-close">접기</span></button>
@@ -522,6 +546,18 @@
                           <div class="collapse" id="abs-p8">
                             <div class="abstract-box">
                               <p>언어 모델이 작성한 프로그램의 신뢰성을 제고하기 위해 스펙을 활용하는 방법이 주목받고 있다. Dafny와 Verus 는 프로그램 코드 수준에서 스펙과 동작을 함께 기술할 수 있는 언어로, 언어 모델이 스스로 스펙을 작성하도록 할 수 있는 유용한 언어다. 하지만 Python, Java, C 와 같은 대중적인 프로그래밍 언어에 비해 Dafny, Verus 와 같은 비주류 언어에서는 비교적 언어 모델의 프로그램 작성 성능이 떨어진다. 비주류 언어를 추가 학습하면 성능을 개선할 수 있지만, 거대 언어 모델을 학습하는 데 충분한 오픈 소스 데이터를 수집하기가 어렵다. 우리는 비주류 언어의 적은 데이터에서도 언어 모델을 효과적으로 학습시킬 수 있는 뉴로-심볼릭 학습 방법을 제안한다. 프로그래밍 언어의 문법 규칙을 학습 시점에 효과적으로 적용하여 적은 데이터로도 모델을 효과적으로 학습할 수 있다.</p>
+                            </div>
+                          </div>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>
+                          <strong>Toward Integrated Threat Modeling for 6G Non-Terrestrial Networks: A Reference Architecture and an Extended ENISA-SPARTA Perspective (가제)</strong><br>
+                          <small class="text-muted">문예성 (사이버보안연구센터)</small><br>
+                          <button class="btn btn-sm btn-link abstract-toggle" type="button" data-bs-toggle="collapse" data-bs-target="#abs-p37" aria-expanded="false" aria-controls="abs-p37"><span class="toggle-open">자세히</span><span class="toggle-close">접기</span></button>
+                          <div class="collapse" id="abs-p37">
+                            <div class="abstract-box">
+                              <p>Sixth-generation (6G) cellular networks natively integrate non-terrestrial networks (NTN), comprising satellites in multiple orbits, high-altitude platforms, and aerial nodes, into a three-dimensional, multi-layered system whose user, ground, and space segments are operated by different parties and together present a large and heterogeneous attack surface. Two established frameworks each address only part of the resulting threat-modeling problem. The ENISA Space Threat Landscape classifies what may occur, where, and at which lifecycle phase, admitting non-adversarial state conditions as entries in their own right, but does not specify how an adversary acts. The Space Attack Research &amp; Tactic Analysis (SPARTA) defines attacker techniques and countermeasures for space missions. However, because it models adversarial action exclusively, it cannot represent the states enabling such action. Research on 6G NTN architecture is active yet has not converged on a reference model suitable for threat modeling. To address these gaps, this paper defines a reference 6G NTN architecture for threat modeling, derived principally from the 3GPP NTN specification set and the 3D multi-layered design of the EU 6G-NTN project, which identifies the assets, interfaces, and trust boundaries that a threat model requires. Over this architecture, the paper presents an approach integrating the ENISA and SPARTA frameworks, separating stateful conditions from attacker actions while relating them through affected assets. A worked example, the seizure of control of the satellite bus, demonstrates that localizing a threat on the architecture reduces a 260-technique catalogue to a three-step path across one trust boundary, and reverses the countermeasure that either framework indicates alone.</p>
                             </div>
                           </div>
                         </td>
@@ -582,6 +618,18 @@
                           <div class="collapse" id="abs-p13">
                             <div class="abstract-box">
                               <p>Token-level explainable AI (XAI) methods in network payload analysis often produce fragmented and difficultto- interpret explanations. To address this limitation, we propose a semantic aggregation framework that groups tokens into protocol-aware semantic units and aggregates their attribution scores. The method leverages structured representations based on semantic key, semantic value, and semantic type to capture contextual information across heterogeneous protocols. Experimental results show that the proposed approach improves interpretability by reducing fragmentation and providing more coherent explanations.</p>
+                            </div>
+                          </div>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>
+                          <strong>Untraceable Asset Movement on Blockchain Systems</strong><br>
+                          <small class="text-muted">송경화 (강민석 교수님 연구실)</small><br>
+                          <button class="btn btn-sm btn-link abstract-toggle" type="button" data-bs-toggle="collapse" data-bs-target="#abs-p35" aria-expanded="false" aria-controls="abs-p35"><span class="toggle-open">자세히</span><span class="toggle-close">접기</span></button>
+                          <div class="collapse" id="abs-p35">
+                            <div class="abstract-box">
+                              <p>Traditional blockchain untraceability schemes, such as mixers and privacy coins, primarily aim to obscure the sender-receiver relationship of an asset transfer by placing it within an anonymity set. This paper studies a stronger goal: whether the asset-transfer event itself can be made unobservable by blending into common decentralized-finance (DeFi) activity. We introduce Deniable Covert Asset Transfer (DCAT), a class of transfers that deliberately stage common loss-producing events, such as sandwich and arbitrage operations, so that a sender appears to suffer an ordinary economic loss while the receiver appears to earn from that loss. We design and validate concrete DCAT instantiations across two representative blockchain execution environments: a sandwich-based instantiation on Ethereum and an arbitrage-based instantiation on Arbitrum. Our experiments demonstrate the empirical unobservability of DCAT under the evaluated settings across both chains. The evaluated transfers are syntactically identical to corresponding maximal extractable value (MEV) activities, are classified as ordinary extractions by standard MEV detection tools, and leave the sender and receiver unlinked under representative forensic tools. Since syntactic inspection cannot separate DCAT from ordinary MEV activity, we examine whether its economic semantics provide useful forensic signals. Through a large-scale empirical study of MEV losses across Ethereum and Arbitrum, we show that key semantic features exhibit power-law characteristics. Extreme losses and repeatedly exploited addresses occur in the wild, and thus are not, by themselves, definitive evidence of collusion. This gives staged transfers plausible deniability and makes fixed-threshold detection prone to false positives. We therefore develop a multivariate statistical method for forensic triage that ranks incidents by the joint rarity of their economic footprint. This method narrows a large search space to a manageable set of suspicious cases for manual investigation. Applying this method to real-world DeFi activity, we showcase three suspicious cases as examples of how such analysis can prioritize incidents for deeper investigation.</p>
                             </div>
                           </div>
                         </td>
@@ -758,7 +806,7 @@
                       </tr>
                       <tr>
                         <td>
-                          <strong>Automated Transplantation of Peephole Optimizations</strong><br>
+                          <strong>꼬마 최적화 자동 이식</strong><br>
                           <small class="text-muted">장봉준 (허기홍 교수님 연구실)</small><br>
                           <button class="btn btn-sm btn-link abstract-toggle" type="button" data-bs-toggle="collapse" data-bs-target="#abs-p28" aria-expanded="false" aria-controls="abs-p28"><span class="toggle-open">자세히</span><span class="toggle-close">접기</span></button>
                           <div class="collapse" id="abs-p28">
@@ -842,42 +890,6 @@
                       </tr>
                       <tr>
                         <td>
-                          <strong>Extending Blockchain Untraceability with Plausible Deniability</strong><br>
-                          <small class="text-muted">송경화 (강민석 교수님 연구실)</small><br>
-                          <button class="btn btn-sm btn-link abstract-toggle" type="button" data-bs-toggle="collapse" data-bs-target="#abs-p35" aria-expanded="false" aria-controls="abs-p35"><span class="toggle-open">자세히</span><span class="toggle-close">접기</span></button>
-                          <div class="collapse" id="abs-p35">
-                            <div class="abstract-box">
-                              <p>Traditional blockchain untraceability schemes, such as mixers and privacy coins, primarily aim to obscure the sender-receiver relationship of an asset transfer by placing it within an anonymity set. This paper studies a stronger goal: whether the asset-transfer event itself can be made unobservable by blending into common decentralized-finance (DeFi) activity. We introduce Deniable Covert Asset Transfer (DCAT), a class of transfers that deliberately stage common loss-producing events, such as sandwich and arbitrage operations, so that a sender appears to suffer an ordinary economic loss while the receiver appears to earn from that loss. We design and validate concrete DCAT instantiations across two representative blockchain execution environments: a sandwich-based instantiation on Ethereum and an arbitrage-based instantiation on Arbitrum. Our experiments demonstrate the empirical unobservability of DCAT under the evaluated settings across both chains. The evaluated transfers are syntactically identical to corresponding maximal extractable value (MEV) activities, are classified as ordinary extractions by standard MEV detection tools, and leave the sender and receiver unlinked under representative forensic tools. Since syntactic inspection cannot separate DCAT from ordinary MEV activity, we examine whether its economic semantics provide useful forensic signals. Through a large-scale empirical study of MEV losses across Ethereum and Arbitrum, we show that key semantic features exhibit power-law characteristics. Extreme losses and repeatedly exploited addresses occur in the wild, and thus are not, by themselves, definitive evidence of collusion. This gives staged transfers plausible deniability and makes fixed-threshold detection prone to false positives. We therefore develop a multivariate statistical method for forensic triage that ranks incidents by the joint rarity of their economic footprint. This method narrows a large search space to a manageable set of suspicious cases for manual investigation. Applying this method to real-world DeFi activity, we showcase three suspicious cases as examples of how such analysis can prioritize incidents for deeper investigation.</p>
-                            </div>
-                          </div>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>
-                          <strong>Beyond Finding Functions: A Component-Level Study of Function Identification</strong><br>
-                          <small class="text-muted">김세훈 (차상길 교수님 연구실)</small><br>
-                          <button class="btn btn-sm btn-link abstract-toggle" type="button" data-bs-toggle="collapse" data-bs-target="#abs-p36" aria-expanded="false" aria-controls="abs-p36"><span class="toggle-open">자세히</span><span class="toggle-close">접기</span></button>
-                          <div class="collapse" id="abs-p36">
-                            <div class="abstract-box">
-                              <p>Function identification is a prerequisite for binary analysis, but final precision and recall do not explain which assumptions inside an identifier actually hold. This work studies function identification at the component level by decomposing common logic into assumptions about call targets, tail calls, unwind metadata, jump tables, code/data separation, and return behavior. We build a ground-truth pipeline for these intermediate facts and evaluate stripped Coreutils, Binutils, and SPEC binaries compiled with GCC/ Clang across multiple architectures, PIE settings, and optimization levels. Our analysis shows that assumption failures are not uniformly distributed, but depend on architecture-, compiler-, and optimization-specific binary idioms. Some metadata sources provide precise but incomplete evidence, some control-flow patterns blur the boundary between local edges and interprocedural transfers, and some compiler-generated code shapes do not match source-level function structure. By measuring these failures directly, the study explains how individual components create candidates, miss valid entries, or require stronger ground truth beyond final function-entry labels.</p>
-                            </div>
-                          </div>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>
-                          <strong>Toward Integrated Threat Modeling for 6G Non-Terrestrial Networks: A Reference Architecture and an Extended ENISA-SPARTA Perspective (가제)</strong><br>
-                          <small class="text-muted">문예성 (사이버보안연구센터)</small><br>
-                          <button class="btn btn-sm btn-link abstract-toggle" type="button" data-bs-toggle="collapse" data-bs-target="#abs-p37" aria-expanded="false" aria-controls="abs-p37"><span class="toggle-open">자세히</span><span class="toggle-close">접기</span></button>
-                          <div class="collapse" id="abs-p37">
-                            <div class="abstract-box">
-                              <p>Sixth-generation (6G) cellular networks natively integrate non-terrestrial networks (NTN), comprising satellites in multiple orbits, high-altitude platforms, and aerial nodes, into a three-dimensional, multi-layered system whose user, ground, and space segments are operated by different parties and together present a large and heterogeneous attack surface. Two established frameworks each address only part of the resulting threat-modeling problem. The ENISA Space Threat Landscape classifies what may occur, where, and at which lifecycle phase, admitting non-adversarial state conditions as entries in their own right, but does not specify how an adversary acts. The Space Attack Research &amp; Tactic Analysis (SPARTA) defines attacker techniques and countermeasures for space missions. However, because it models adversarial action exclusively, it cannot represent the states enabling such action. Research on 6G NTN architecture is active yet has not converged on a reference model suitable for threat modeling. To address these gaps, this paper defines a reference 6G NTN architecture for threat modeling, derived principally from the 3GPP NTN specification set and the 3D multi-layered design of the EU 6G-NTN project, which identifies the assets, interfaces, and trust boundaries that a threat model requires. Over this architecture, the paper presents an approach integrating the ENISA and SPARTA frameworks, separating stateful conditions from attacker actions while relating them through affected assets. A worked example, the seizure of control of the satellite bus, demonstrates that localizing a threat on the architecture reduces a 260-technique catalogue to a three-step path across one trust boundary, and reverses the countermeasure that either framework indicates alone.</p>
-                            </div>
-                          </div>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>
                           <strong>Matching and Aggregation Defects in Binary Code Similarity Tools</strong><br>
                           <small class="text-muted">Zunnoor Fayyaz Awan (차상길 교수님 연구실)</small><br>
                           <button class="btn btn-sm btn-link abstract-toggle" type="button" data-bs-toggle="collapse" data-bs-target="#abs-p38" aria-expanded="false" aria-controls="abs-p38"><span class="toggle-open">자세히</span><span class="toggle-close">접기</span></button>
@@ -940,7 +952,8 @@
               <div class="card-header">주관</div>
               <div class="card-body">
                 <div class="d-flex flex-wrap justify-content-center align-items-center gap-4">
-                  <img src="./res/gsis_logo.png" alt="GSIS" style="height:45px; max-width:100%;" />
+                  <img src="./res/kaist_logo.png" alt="KAIST" style="height:45px; max-width:100%;" />
+                  <img src="./res/gsis_logo.png" alt="GSIS" style="height:70px; max-width:100%; transform: translateY(6px);" />
                   <img src="./res/csrc-logo.png" alt="CSRC" style="height:80px; max-width:100%;" />
                 </div>
               </div>
