@@ -782,12 +782,12 @@
                       </tr>
                       <tr>
                         <td>
-                          <strong>Inferring Function Signatures in Statically Linked Binaries</strong><br>
+                          <strong>Type Inference for Instruction Operands in Statically Linked Binaries</strong><br>
                           <small class="text-muted">이연준 (차상길 교수님 연구실)</small><br>
                           <button class="btn btn-sm btn-link abstract-toggle" type="button" data-bs-toggle="collapse" data-bs-target="#abs-p26" aria-expanded="false" aria-controls="abs-p26"><span class="toggle-open">자세히</span><span class="toggle-close">접기</span></button>
                           <div class="collapse" id="abs-p26">
                             <div class="abstract-box">
-                              <p>Function signatures play a crucial role in extracting unique function features for various binary analysis tasks, including function similarity analysis and library identification. However, when a statically linked binary is stripped, function signatures are no longer available, which degrades the performance of existing analysis techniques. In this research, I propose a static analysis approach that infers whether each register in every instruction represents a memory address and propagates the inferred type both within and across functions to recover the function signatures. The proposed approach is capable of reconstructing function signatures from stripped statically linked binaries. It will improve the accuracy of a wide range of binary analysis tasks, including function similarity analysis.</p>
+                              <p>Address-related arithmetic instructions can vary across compilations and introduce binary-specific features. Selecting such instructions as features can degrade the performance of Binary Code Similarity Analysis (BCSA). To identify such instructions, this research performs static Address/Value type inference on instruction operands at each program point. The analysis extracts type constraints from instruction semantics and ABI information, and propagates type information both within and across functions. Since instruction-level ground truth is unavailable, the analysis is evaluated on function parameters and returns using ground truth extracted from DWARF binaries. The inferred type information can ultimately be used to filter address-related arithmetic instructions for BCSA feature selection.</p>
                             </div>
                           </div>
                         </td>
